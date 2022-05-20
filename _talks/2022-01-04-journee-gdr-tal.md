@@ -2,7 +2,7 @@
 title: "Apprentissage des représentations de la parole et du langage"
 collection: talks
 type: "Talk"
-permalink: /talks/journee_gdr_tal
+permalink: /talks/2022-01-04-journee-gdr-tal
 venue: "GDR TAL"
 date: 2022-04-01
 location: "Grenoble, France"
