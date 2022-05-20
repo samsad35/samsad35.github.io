@@ -1,11 +1,11 @@
 ---
-title: "Teaching experience 2"
+title: "Practical work"
 collection: teaching
 type: "Workshop"
 permalink: /teaching/2021-spring-teaching-1
-venue: "University 1, Department"
+venue: "University de Rennes 1"
 date: 2021-09-10
-location: "University de Rennes 1"
+location: "Rennes"
 ---
 
 I was supervising students during their practical work:
