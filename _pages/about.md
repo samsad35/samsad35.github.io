@@ -9,3 +9,5 @@ redirect_from:
 ---
 
 I am a PhD student at CentraleSupelec in Rennes. My research interests are the analysis and understanding of latent representations of generative models by deep learning, with the aim of linking these latent representations with high-level variation factors such as emotions. 
+
+## News 

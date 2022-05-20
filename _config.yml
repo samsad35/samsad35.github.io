@@ -80,12 +80,12 @@ analytics:
 
 # Site Author
 author:
-  name             : "S. Samir"
-  avatar           : "sam_centrale.png"
-  bio              : "Phd"
+  name             : "Samir S."
+  avatar           : "profile.png"
+  bio              : "Phd Student"
   location         : "France"
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "https://scholar.google.com/citations?user=1ruIV3sAAAAJ&hl=fr&inst=14444354877591788330&oi=ao"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
