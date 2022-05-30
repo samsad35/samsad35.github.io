@@ -12,28 +12,26 @@ redirect_from:
 Education
 ======
 * M.S. in SISEA (Signal Image, SystEmes intégrés, Automatique), Université de Rennes 1, 2018-2020
-* Ph.D in latent representation analysis and control for multimodal, CentraleSupelec, 2023 (expected)
+* Ph.D in latent representation analysis and control for multimodal data, CentraleSupelec, 2023 (expected)
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Mars 2020: Junior researcher in artificial intelligence
+  * Deep learning to detect emotion in audio signals.
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+
+* Mai 2019: internship at LTSI
+  * Signal processing to detect respiratory anomalies.
+
+
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* probability and statistics
+* generative model
+* Computer tools and programming
+  * Python, Java, C, C++
+  * Latex
 
 Publications
 ======
@@ -55,4 +53,4 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* 
