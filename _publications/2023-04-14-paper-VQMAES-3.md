@@ -1,7 +1,7 @@
 ---
 title: "A vector quantized masked autoencoder for speech emotion recognition"
 collection: publications
-permalink: /publications/2022-04-14-paper-VQMAES-2
+permalink: /publication/2022-04-14-paper-VQMAES-3
 excerpt: 'Self-supervised MAE for speech emotion recognition.'
 date: 2023-04-14
 venue: 'WORKSHOP ICASSP SASB'
