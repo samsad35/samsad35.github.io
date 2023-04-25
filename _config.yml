@@ -80,9 +80,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Samir S."
+  name             : "Samir"
   avatar           : "sam_centrale.jpeg"
-  bio              : "Phd Student"
+  bio              : "Ph.D Student"
   location         : "France"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"

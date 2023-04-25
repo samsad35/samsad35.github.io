@@ -2,9 +2,9 @@
 title: "A vector quantized masked autoencoder for speech emotion recognition"
 collection: publications
 permalink: /publication/2023-04-14-paper-VQMAES-number-2
-excerpt: 'Self-supervised MAE for speech emotion recognition.'
+excerpt: 'Combined VQ-VAE (unsupervised) with MAE (self-supervised) for speech emotion recognition.'
 date: 2023-04-14
-venue: 'WORKSHOP ICASSP SASB'
+venue: 'Workshop ICASSP (SASB)'
 paperurl: 'https://arxiv.org/pdf/2304.11117.pdf'
 citation: 'Sadok Samir, Simon Leglaive and Renaud Séguier. “A vector quantized masked autoencoder for speech emotion recognition.” (2023).'
 ---
