@@ -1,7 +1,7 @@
 ---
 title: "Learning and controlling the source-filter representation of speech with a variational autoencoder"
 collection: publications
-permalink: /publication/2022-04-11-paper-SFVAE-1
+permalink: /publication/2022-04-11-paper-SFVAE-number-1
 excerpt: 'We show that the source-filter model of speech production naturally emerges in the latent space of an unsupervised VAE and we propose a weakly-supervised method to control the pitch and formant frequencies of speech signals in the VAE latent space.'
 date: 2023-02-01
 venue: 'Speech Communication'
