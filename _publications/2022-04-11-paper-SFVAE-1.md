@@ -3,7 +3,7 @@ title: "Learning and controlling the source-filter representation of speech with
 collection: publications
 permalink: /publication/2022-04-11-paper-SFVAE-1
 excerpt: 'We show that the source-filter model of speech production naturally emerges in the latent space of an unsupervised VAE and we propose a weakly-supervised method to control the pitch and formant frequencies of speech signals in the VAE latent space.'
-date: 2023-02
+date: 2023-02-01
 venue: 'Speech Communication'
 paperurl: 'https://www-sciencedirect-com.ezproxy.universite-paris-saclay.fr/science/article/pii/S0167639323000304'
 citation: 'Learning and controlling the source-filter representation of speech with a variational autoencoder Samir Sadok, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier Speech Communication, vol. 148, 2023.'
