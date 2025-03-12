@@ -2,11 +2,11 @@
 title: "AnCoGen: Analysis, Control and Generation of Speech with a Masked Autoencoder"
 collection: publications
 permalink: /publication/2025-01-09-paper-ancogen-number-4
-excerpt: 'We present AnCoGen, a new method using a masked autoencoder to unify speech signal analysis, control, and generation in single model.
+excerpt: 'We present AnCoGen, a new method using a masked autoencoder to unify speech signal analysis, control, and generation in single model.'
 date: 2025-01-09
-venue: 'ICASSP'
+venue: 'IEEE ICASSP'
 paperurl: <a href='https://www.sciencedirect.com/science/article/pii/S0893608024000340'>(link)</a>
-citation: 'Samir Sadok, Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda. A multimodal dynamical variational autoencoder for audiovisual speech representation learning. ICASSP, 2025'
+citation: 'Samir Sadok, Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda. A multimodal dynamical variational autoencoder for audiovisual speech representation learning. IEEE ICASSP, 2025'
 ---
 <p style="text-align: center;"><a href="https://samsad35.github.io/site-ancogen/">Demo</a> - <a href="https://arxiv.org/html/2501.05332">Paper</a></p> 
 
