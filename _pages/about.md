@@ -13,8 +13,9 @@ I hold a PhD titled "[Learning the Audiovisual Representation of Speech Applied 
 My research focuses on multimodal generative models for audiovisual speech. I aim to develop interpretable generative models to enhance data analysis, control, and generation.
 
 ## News 
-- Article accepted &#127881; : **(09-01-2024)** _'A multimodal dynamical variational autoencoder for audiovisual speech representation learning'_ is accepted for Neural networks, 2024.
-- Thesis defense &#127881; : **(08-03-2024)** "[Learning the Audiovisual Representation of Speech Applied to Emotion Recognition](https://theses.hal.science/tel-04617104v1)".
-- Article accepted &#127881; : **(09-01-2024)** _'A multimodal dynamical variational autoencoder for audiovisual speech representation learning'_ is accepted for Neural networks, 2024.
-- Article accepted &#127881; : **(14-04-2023)** _'A vector quantized masked autoencoder for speech emotion recognition'_ is accepted for the workshop Self-supervision in Audio, Speech and Beyond, ICASSP SASB 2023.
-- Article accepted &#127881; : **(14-04-2023)** _'learning and controlling the source-filter representation of speech with a variational autoencoder'_ has been accepted for Speech Communication publication. 
+- 🎉 **Article Accepted** (**Jan. 2025**) – *"AnCoGen: Analysis, Control, and Generation of Speech with a Masked Autoencoder"* accepted at **ICASSP 2025**.  
+- 🎉 **Thesis Defense** (**March 8, 2024**) – *"[Learning the Audiovisual Representation of Speech Applied to Emotion Recognition](https://theses.hal.science/tel-04617104v1)"*.  
+- 🎉 **Article Accepted** (**Jan. 9, 2024**) – *"A Multimodal Dynamical Variational Autoencoder for Audiovisual Speech Representation Learning"* accepted in **Neural Networks, 2024**.  
+- 🎉 **Article Accepted** (**Apr. 14, 2023**) – *"A Vector Quantized Masked Autoencoder for Speech Emotion Recognition"* accepted at the **Self-Supervision in Audio, Speech, and Beyond (SASB) Workshop, ICASSP 2023**.  
+- 🎉 **Article Accepted** (**Apr. 14, 2023**) – *"Learning and Controlling the Source-Filter Representation of Speech with a Variational Autoencoder"* accepted in **Speech Communication**.  
+
