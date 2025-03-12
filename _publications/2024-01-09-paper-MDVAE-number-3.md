@@ -5,7 +5,7 @@ permalink: /publication/2024-01-09-paper-MDVAE-number-3
 excerpt: 'We present a multimodal _and_ dynamical VAE (MDVAE) applied to unsupervised audio-visual speech representation learning.'
 date: 2024-01-09
 venue: 'Neural Networks (Elsevier)'
-paperurl: 'https://www.sciencedirect.com/science/article/pii/S0893608024000340'
+paperurl: <a href='https://www.sciencedirect.com/science/article/pii/S0893608024000340'>link</a>
 citation: 'Samir Sadok, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier. A multimodal dynamical variational autoencoder for audiovisual speech representation learning. Neural Networks (Elsevier), 2024'
 ---
 <p style="text-align: center;"><a href="https://samsad35.github.io/site-mdvae/">Demo</a> - <a href="https://www.sciencedirect.com/science/article/pii/S0893608024000340">Paper</a></p> 
