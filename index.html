@@ -70,7 +70,7 @@
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-<tr onmouseout="nexf_stop()" onmouseover="nexf_start()">
+<tr class="hover-yellow" onmouseout="nexf_stop()" onmouseover="nexf_start()">
       <td style="padding:16px;width:30%;vertical-align:middle">
         <div class="one">
           <div class="two" id='nexf_image'>
@@ -109,7 +109,7 @@
       </td>
     </tr>
 	
-    <tr onmouseout="bolt3d_stop()" onmouseover="bolt3d_start()">
+    <tr class="hover-yellow" onmouseout="bolt3d_stop()" onmouseover="bolt3d_start()">
       <td style="padding:16px;width:10%;vertical-align:middle">
         <div class="one">
           <div class="two" id='ancogen'>
@@ -148,7 +148,7 @@
       </td>
     </tr>
 
-<tr onmouseout="avmae_stop()" onmouseover="avmae_start()">
+<tr class="hover-yellow" onmouseout="avmae_stop()" onmouseover="avmae_start()">
       <td style="padding:16px;width:20%;vertical-align:middle">
         <div class="one">
           <div class="two" id='avmae'>
@@ -185,7 +185,7 @@
         This paper introduces VQ-MAE-AV, <strong>a self-supervised multimodal model</strong> that learns discrete audiovisual speech representations via masked autoencoders and vector-quantized VAEs, enabling state-of-the-art emotion recognition with minimal labeled data.      </td>
     </tr>
 
-       <tr>
+       <tr class="hover-yellow">
       <td style="padding:16px;width:20%;vertical-align:middle">
           <img src='images/russel/russellbased_filter.png' width="160">
       </td>
@@ -205,7 +205,7 @@
     </tr>
 
 
-    <tr onmouseout="mdvae_stop()" onmouseover="mdvae_start()">
+    <tr class="hover-yellow" onmouseout="mdvae_stop()" onmouseover="mdvae_start()">
       <td style="padding:16px;width:20%;vertical-align:middle">
         <div class="one">
           <div class="two" id='mdvae'>
@@ -243,7 +243,7 @@
       </td>
     </tr>
 
-   <tr onmouseout="amae_stop()" onmouseover="amae_start()">
+   <tr class="hover-yellow" onmouseout="amae_stop()" onmouseover="amae_start()">
       <td style="padding:16px;width:20%;vertical-align:middle">
         <div class="one">
           <div class="two" id='amae'>
@@ -280,7 +280,7 @@
         This paper presents VQ-MAE-S, a self-supervised speech model combining masked autoencoders and vector-quantized VAEs, which, when pre-trained on VoxCeleb2 and fine-tuned on emotional speech, achieves state-of-the-art performance in speech emotion recognition.      </td>
     </tr>
 
-    <tr onmouseout="sf_stop()" onmouseover="sf_start()">
+    <tr class="hover-yellow" onmouseout="sf_stop()" onmouseover="sf_start()">
       <td style="padding:16px;width:20%;vertical-align:middle">
         <div class="one">
           <div class="two" id='sf'>
@@ -299,7 +299,7 @@
           sf_stop()
         </script>
       </td>
-      <td style="padding:8px;width:80%;vertical-align:middle">
+      <td class="hover-yellow" style="padding:8px;width:80%;vertical-align:middle">
         <a href="https://samsad35.github.io/site-sfvae/">
           <span class="papertitle">Learning and controlling the source-filter representation of speech with a variational autoencoder</span>
         </a>
@@ -367,6 +367,11 @@
 <!--      </td>-->
 <!--    </tr>-->
 
+<style>
+.hover-yellow:hover {
+  background-color: #fffdd6;
+}
+</style>
 
 
 
