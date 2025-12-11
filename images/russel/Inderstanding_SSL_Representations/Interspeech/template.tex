@@ -1,0 +1,231 @@
+\documentclass{Interspeech}
+
+% 2023-10-21 modified by Simon King (Simon.King@ed.ac.uk)  
+% 2024-01 modified by TPC Chairs of Interspeech 2024  
+% 2024-10 modified by Antoine Serrurier for Interspeech 2025
+% 2024-12 modified by TPC Chairs of Interspeech 2025
+
+% **************************************
+% *    DOUBLE-BLIND REVIEW SETTINGS    *
+% **************************************
+% Comment out \interspeechcameraready when submitting the 
+% paper for review.
+% If your paper is accepted, uncomment this to produce the
+%  'camera ready' version to submit for publication.
+
+\interspeechcameraready 
+
+
+% **************************************
+% *                                    *
+% *      STOP !   DO NOT DELETE !      *
+% *          READ THIS FIRST           *
+% *                                    *
+% * This template also includes        *
+% * important INSTRUCTIONS that you    *
+% * must follow when preparing your    *
+% * paper. Read it BEFORE replacing    *
+% * the content with your own work.    *
+% **************************************
+
+% title here must exactly match the title entered into the paper submission system
+\title{Understanding SSL Representations: Through Information-Theoretic, Geometric, and Invariance Perspectives}
+
+% the order of authors here must exactly match the order entered into the paper submission system
+% note that the COMPLETE list of authors MUST be entered into the paper submission system at the outset, including when submitting your manuscript for double-blind review
+\author[affiliation={1}]{Samir}{Sadok}
+
+%The maximum number of authors in the author list is 20. If the number of contributing authors is more than this, they should be listed in a footnote or the acknowledgement section.
+
+% if you have too many addresses to fit within the available space, try removing the "\\" newlines
+\affiliation{First Department}{First Affiliation}{First Country}
+% \affiliation{Second Department}{Second Affiliation}{Second Country}
+% \affiliation{}{Just Institute}{And Country}
+\email{samir.sadok@inria.fr}
+\keywords{Self-supervised learning, audio representation learning, geometry of embeddings, invariance, interpretability}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\usepackage{comment}
+\usepackage{mdframed}
+\usepackage{subcaption}
+\usepackage{multirow}
+\graphicspath{{../images/}}
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage[dvipsnames]{xcolor}
+\usepackage{color, colortbl, arydshln}
+
+\begin{document}
+
+\maketitle
+
+% the abstract here must exactly match the abstract entered into the paper submission system
+\begin{abstract}
+Self-supervised learning (SSL) has transformed audio representation learning by enabling models such as WavLM and Wav2Vec2 to extract rich semantic features directly from raw waveforms, without the need for explicit supervision. Yet, how these models organize, compress, and encode information across their layers remains largely unexplored.
+In this work, we present a systematic, layer-wise analysis of audio SSL models through three complementary perspectives: information-theoretic, geometric, and invariance-based. From an information-theoretic standpoint, we quantify how layers balance compression and semantic preservation using matrix-based entropy measures. Geometrically, we characterize how token embeddings unfold and reorganize in high-dimensional space as depth increases. Finally, we evaluate the robustness of the learned representations to input perturbations, revealing the degree of invariance captured by each model.
+Our results uncover consistent trends across models and scales, showing that early and middle layers retain the richest semantic content, while deeper layers emphasize invariance and abstraction. These findings offer new insights into the internal organization of audio SSL models and provide principled directions for improving their interpretability and downstream performance.
+\end{abstract}
+
+
+%% ------------------------------------------------------------------
+%% Contenu Principal
+%% ------------------------------------------------------------------
+
+\section{Introduction}
+Self-supervised learning (SSL) has become a cornerstone of modern audio processing, with models such as WavLM \cite{chen2022wavlm}, Wav2Vec2 \cite{baevski2020wav2vec}, and HuBERT \cite{hsu2021hubert} achieving remarkable performance across speech recognition, speaker verification, and speech enhancement tasks. By leveraging unlabeled audio data, these models learn representations that capture meaningful semantic and acoustic information without relying on explicit supervision. However, despite their empirical success, the internal representations learned by SSL audio models are still not fully understood. Understanding how these models encode and compress information is crucial. This knowledge also informs their geometric organization, interpretability, and downstream performance.
+
+In this work, similar to the study by \cite{skean2025layer} on language models, we investigate self-supervised audio models along three complementary axes:
+
+\textbf{Information-theoretic perspective:} Following the principles of the information bottleneck \cite{shwartz2017opening}, we study how each layer preserves or compresses semantic content. Using matrix-based entropy measures, we quantify how much information is retained, how representations evolve across layers, and how compression relates to generalization.
+
+\textbf{Geometric perspective:} Inspired by recent work on high-dimensional embeddings \cite{hosseini2023large}, we explore the geometric structure of token embeddings. We examine how embeddings unfold across layers, form manifolds, and capture task-relevant variability, providing insight into the representational organization of SSL models.
+
+\textbf{Invariance perspective:} Robustness to input perturbations is a hallmark of meaningful representations. We analyze whether embeddings remain stable under transformations such as additive noise, temporal shifts, or contrastive sampling perturbations \cite{oord2018representation, thilak2023lidar, skean2023dime}. This evaluation reveals the extent to which SSL models capture invariant semantic content versus incidental details.
+
+By combining these three complementary analyses, we provide a layer-by-layer understanding of audio SSL models, uncovering the mechanisms by which they balance compression, geometric organization, and invariance. Our study not only sheds light on the inner workings of widely-used models such as WavLM and Wav2Vec but also offers actionable insights for designing more robust and interpretable audio representation models.
+
+Unlike most prior studies \cite{chiu2025probing} that analyze SSL models primarily through their correlation with predefined speech attributes—such as phonetic content, speaker identity, or emotional cues—our work takes a complementary, model-centric perspective. Instead of evaluating embeddings based on downstream tasks or external labels, we investigate intrinsic properties of the embeddings themselves: how they compress information, how they are geometrically organized in high-dimensional space, and how robust they are to perturbations. This approach allows us to uncover layer-wise dynamics and representation strategies that are not tied to specific labels, providing insights into the internal mechanisms of SSL audio models like WavLM, Wav2Vec, and HuBERT.
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Overview}
+In this work, we analyze self-supervised audio models by examining their \textbf{token embeddings} across all layers. 
+Our analysis focuses on three complementary perspectives: 
+\textbf{information-theoretic} (how embeddings compress or preserve semantic information), 
+\textbf{geometric} (how embeddings are organized in high-dimensional space), and 
+\textbf{invariance} (how robust embeddings are to input perturbations). 
+We first introduce the notation and the key quantities used throughout our study, then describe the metrics associated with each perspective.
+
+\subsection{Notation and key quantities}
+\label{sec:notation}
+\paragraph{Token embeddings.} For a given layer $l$, we denote the token embeddings by a matrix $Z^{(l)} \in \mathbb{R}^{N \times D}$, 
+where $N$ is the number of tokens and $D$ the embedding dimension. 
+Each row $\mathbf{z}_i^{(l)}$ represents the embedding of the $i$-th token at layer $l$. 
+These embeddings serve as the foundation for all subsequent analyses.
+
+\paragraph{Gram matrix and eigenvalues.} We define the Gram matrix of layer $l$ as
+\[
+K^{(l)} = Z^{(l)} (Z^{(l)})^\top \in \mathbb{R}^{N \times N}.
+\] 
+The eigenvalues $\{\lambda_i(K^{(l)})\}$ of this matrix capture how the variance of the embeddings is distributed along different directions in the high-dimensional space.
+
+\begin{tcolorbox}[colback=gray!10,colframe=black!50,title=Intuition]
+If only a few eigenvalues dominate, the embeddings effectively lie in a low-dimensional subspace, indicating strong compression.  
+Conversely, if the eigenvalues are more uniform, the embeddings are spread across many directions, reflecting high diversity and high-entropy representations.
+\end{tcolorbox}
+
+\paragraph{Curvature of token sequences.} To quantify how embeddings change along a sequence, we compute differences between consecutive tokens: 
+\[
+\mathbf{v}_k = \mathbf{z}_{k+1} - \mathbf{z}_k.
+\] 
+The average curvature over a sequence of length $L$ is then defined as:
+\[
+\bar{C} = \frac{1}{L-2} \sum_{k=1}^{L-2} 
+\arccos \frac{\mathbf{v}_{k+1}^\top \mathbf{v}_k}{\|\mathbf{v}_{k+1}\|\|\mathbf{v}_k\|}.
+\]
+
+\begin{tcolorbox}[colback=gray!10,colframe=black!50,title=Intuition]
+High curvature indicates abrupt changes between consecutive tokens, which often corresponds to local-level features.  
+Low curvature reflects smooth transitions, which are associated with global, semantically coherent structures.
+\end{tcolorbox}
+
+\paragraph{Augmented inputs and invariance.} For a given audio sample $x_i$, we create two augmented versions $x_i^{(a)}$ and $x_i^{(b)}$. 
+The corresponding embeddings $Z_1^{(l)}$ and $Z_2^{(l)}$ are then compared to evaluate the robustness of the model's representations.
+
+\begin{tcolorbox}[colback=gray!10,colframe=black!50,title=Intuition]
+High invariance means that the embeddings remain stable under perturbations, preserving semantic information.  
+Low invariance indicates that the embeddings are sensitive to irrelevant details introduced by augmentation.
+\end{tcolorbox}
+
+\subsection{Information-Theoretic analysis}
+To quantify the amount of semantic information preserved across layers, we adopt \textbf{matrix-based entropy} \cite{yu2019multivariate,skean2023dime}. 
+For the Gram matrix $K^{(l)}$ of layer $l$ with eigenvalues $\{\lambda_i(K^{(l)})\}_{i=1}^{r}$, we define
+\[
+S_\alpha(Z^{(l)}) = \frac{1}{1-\alpha} 
+\log \sum_{i=1}^{r} \left( \frac{\lambda_i(K^{(l)})}{\mathrm{tr}(K^{(l)})} \right)^\alpha,
+\]
+where $r = \mathrm{rank}(K^{(l)}) \le \min(N,D)$ and $\alpha>0$ (typically $\alpha = 1$ for von Neumann entropy).
+
+A small $S_\alpha$ indicates that the embeddings are compressed into a few principal directions, retaining only the most essential information.  
+A large $S_\alpha$ implies that the embeddings are diverse and spread across many dimensions, reflecting high-entropy representations.
+
+\begin{figure*}[t]
+    \centering
+    % Première sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{draf/figures/exp-1/entropy.png}
+        \caption{Entropy}
+        \label{fig:fig1a}
+    \end{subfigure}
+    \hfill
+    % Deuxième sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/exp-1/curvature.png}
+        \caption{Curvature}
+        \label{fig:fig1b}
+    \end{subfigure}
+    \hfill
+    % Troisième sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/exp-1/invariance.png}
+        \caption{InfoNCE}
+        \label{fig:fig1c}
+    \end{subfigure}
+    
+    \caption{Layer-wise analysis of SSL models across three complementary perspectives: information-theoretic (entropy), geometric (curvature), and invariance (robustness to input perturbations).}
+    \label{fig:analysis-3-perspectives}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    % Première sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/size/0.png}
+        \caption{Entropy}
+        \label{fig:fig2a}
+    \end{subfigure}
+    \hfill
+    % Deuxième sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/size/1.png}
+        \caption{Curvature}
+        \label{fig:fig2b}
+    \end{subfigure}
+    \hfill
+    % Troisième sous-figure
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/size/2.png}
+        \caption{InfoNCE}
+        \label{fig:fig2c}
+    \end{subfigure}
+    
+    \caption{The impact of training data and model size on SSL representations, showing how layer-wise properties—entropy, curvature, and invariance—vary across models of different scales.}
+    \label{fig:size}
+\end{figure*}
+
+
+\section{Discussion}
+
+Authors must proofread their PDF file prior to submission, to ensure it is correct. Do not rely on proofreading the \LaTeX\xspace source or Word document. \textbf{Please proofread the PDF file before it is submitted.}
+
+\section{Acknowledgements}
+Acknowledgement should only be included in the camera-ready version, not in the version submitted for review. The 5th page is reserved exclusively for acknowledgements and  references. No other content must appear on the 5th page. Appendices, if any, must be within the first 4 pages. The acknowledgments and references may start on an earlier page, if there is space.
+
+\ifinterspeechfinal
+     The Interspeech 2025 organisers
+\else
+     The authors
+\fi
+would like to thank ISCA and the organising committees of past Interspeech conferences for their help and for kindly providing the previous version of this template.
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{mybib}
+
+\end{document}
