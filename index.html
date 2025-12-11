@@ -10,10 +10,35 @@
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
+    <style>
+    /* Force la taille de la police pour le corps, les tableaux et les paragraphes */
+    body, table, td, div {
+        font-size: 15px !important; /* Ajustez ce chiffre (ex: 20px) selon vos besoins */
+    }
+
+    /* Optionnel : Ajuste la taille des liens et des titres proportionnellement */
+    a {
+        font-size: 15px !important;
+        color: #53388A;
+    }
+    h2 {
+        font-size: 1.5em !important; /* Garde les titres plus gros que le texte */
+    }
+
+    .papertitle {
+        font-size: 1.3em !important; /* Garde les titres plus gros que le texte */
+        color: #8A388A !important;
+    }
+
+    .abstract {
+        color: #3D3D40 !important;
+    }
+</style>
+
 </head>
 
-<body>
-<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+<body style="font-size: 20px;">
+<table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
     <tr style="padding:0px">
         <td style="padding:0px">
@@ -21,7 +46,7 @@
                 <tbody>
                 <tr style="padding:0px">
                     <td style="padding:2.5%;width:63%;vertical-align:middle">
-                        <p class="name" style="text-align: center;">
+                        <p class="name" style="text-align: center; font-size: 20px;">
                             Samir Sadok
                         </p>
                         <p>
@@ -68,10 +93,13 @@
                                 (2024, CentraleSupélec)
                             </a>
                             <br>
-                            This thesis develops unsupervised and self-supervised generative models for multimodal and
+                            <span class="abstract">
+                                This thesis develops unsupervised and self-supervised generative models for multimodal and
                             sequential audiovisual speech, learning disentangled latent representations that enhance
                             interpretability and enable effective emotion recognition, signal analysis, transformation,
                             and generation.
+                            </span>
+
                         </p>
                     </td>
                 </tr>
@@ -95,7 +123,7 @@
                 <tbody>
 
                 <tr class="hover-yellow" onmouseout="nexf_stop()" onmouseover="nexf_start()">
-                    <td style="padding:16px;width:30%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='nexf_image'>
                                 <img src='images/Bringing/analysis.png' width=100%>
@@ -114,7 +142,7 @@
                             nexf_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
+                    <td style="padding:8px;width:100%;vertical-align:middle">
                         <a href="https://arxiv.org/abs/2506.04492">
                             <span class="papertitle">Bringing Interpretability to Neural Audio Codecs</span>
                         </a>
@@ -129,7 +157,7 @@
                         /
                         <a href="https://arxiv.org/abs/2506.04492">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             Neural audio codecs efficiently encode continuous speech waveforms into low-rate discrete
                             units but often lack interpretability because they are optimized mainly for reconstruction.
                             This work introduces a two-step approach—analysis and synthesis—using AnCoGen to understand
@@ -139,7 +167,7 @@
                 </tr>
 
                 <tr class="hover-yellow" onmouseout="bolt3d_stop()" onmouseover="bolt3d_start()">
-                    <td style="padding:16px;width:10%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='ancogen'>
                                 <img src='images/ancogen/2.svg' width="160">
@@ -172,7 +200,7 @@
                         /
                         <a href="https://arxiv.org/abs/2501.05332">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This article presents AnCoGen, a unified masked-autoencoder model that can analyze, control,
                             and generate speech from key attributes such as speaker identity, pitch, content, and signal
                             quality, demonstrating strong performance across analysis-resynthesis, pitch estimation and
@@ -215,7 +243,7 @@
                         /
                         <a href="https://arxiv.org/abs/2305.03568">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This paper introduces VQ-MAE-AV, <strong>a self-supervised multimodal model</strong> that
                             learns discrete audiovisual speech representations via masked autoencoders and
                             vector-quantized VAEs, enabling state-of-the-art emotion recognition with minimal labeled
@@ -237,7 +265,7 @@
                         <br>
                         <a href="https://centralesupelec.hal.science/hal-05085528/">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This study uses Transformer-based models on text and audio to uncover emotional latent
                             spaces, showing that multimodal representations more closely replicate Russell’s circumplex
                             model of affect and highlighting the benefits of combining modalities in emotion analysis.
@@ -279,7 +307,7 @@
                         /
                         <a href="https://arxiv.org/abs/2305.03582">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This paper introduces MDVAE, a multimodal and dynamical variational autoencoder that learns
                             disentangled audiovisual speech representations by separating static, dynamic,
                             modality-specific, and shared latent factors through a two-stage unsupervised training
@@ -322,7 +350,7 @@
                         /
                         <a href="https://arxiv.org/pdf/2304.11117">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This paper presents VQ-MAE-S, a self-supervised speech model combining masked autoencoders
                             and vector-quantized VAEs, which, when pre-trained on VoxCeleb2 and fine-tuned on emotional
                             speech, achieves state-of-the-art performance in speech emotion recognition.</td>
@@ -362,7 +390,7 @@
                         /
                         <a href="https://arxiv.org/abs/2204.07075">arXiv</a>
                         <p></p>
-                        <p>
+                        <p class="abstract">
                             This work demonstrates that a VAE trained on unlabeled speech naturally encodes
                             source-filter factors in orthogonal latent subspaces, allowing accurate, independent control
                             of fundamental frequency and formants for speech transformation using only a few seconds of
