@@ -120,8 +120,51 @@
                 </tr>
                 </tbody>
             </table>
+
+
+
             <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                 <tbody>
+                    <tr class="hover-yellow" onmouseout="residual_stop()" onmouseover="residual_start()">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
+                        <div class="one">
+                            <div class="two" id='residual_image'>
+                                <img src='images/residual/residual.svg' width=100%>
+                            </div>
+                            <img src='images/residual/residual-1.svg' width=100%>
+                        </div>
+                        <script type="text/javascript">
+                            function residual_start() {
+                                document.getElementById('residual_image').style.opacity = "1";
+                            }
+
+                            function residual_stop() {
+                                document.getElementById('residual_image').style.opacity = "0";
+                            }
+
+                            residual_stop()
+                        </script>
+                    </td>
+                    <td style="padding:8px;width:70%;vertical-align:middle">
+                        <a href="https://samsad35.github.io/site-residual/">
+                            <span class="papertitle">Residual tokens enhance masked autoencoders for speech modeling</span>
+                        </a>
+                        <br>
+                        <strong>Samir Sadok*</strong>,
+                        Stéphane Lathuilière,
+                        Xavier Alameda-Pineda
+                        <br>
+                        <em>ICASSP</em>, 2026
+                        <br>
+                        <a href="https://samsad35.github.io/site-residual/">Project page</a>
+                        /
+                        <a href="https://samsad35.github.io/site-residual/">arXiv</a>
+                        <p></p>
+                        <p class="abstract">
+                            RT-MAE leverages Perceiver-style cross-attention to extract unsupervised residual tokens that capture natural speech nuances like timbre and emotion.
+                            A dropout-based regularization strategy (τ) ensures these tokens enhance expressivity without compromising the interpretability or controllability of explicit attributes. </p>
+                    </td>
+                </tr>
 
                 <tr class="hover-yellow" onmouseout="nexf_stop()" onmouseover="nexf_start()">
                     <td style="padding:16px;width:25%;vertical-align:middle">
@@ -143,7 +186,7 @@
                             nexf_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:100%;vertical-align:middle">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
                         <a href="https://arxiv.org/abs/2506.04492">
                             <span class="papertitle">Bringing Interpretability to Neural Audio Codecs</span>
                         </a>
@@ -154,7 +197,7 @@
                         <br>
                         <em>Interspeech</em>, 2025 <font color="red"><strong>(Oral Presentation)</strong></font>
                         <br>
-                        <a href="https://samsad35.github.io/site-ancogen/">project page</a>
+                        <a href="https://samsad35.github.io/site-ancogen/">Project page</a>
                         /
                         <a href="https://arxiv.org/abs/2506.04492">arXiv</a>
                         <p></p>
@@ -187,7 +230,7 @@
                             bolt3d_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
                         <a href="https://samsad35.github.io/site-ancogen/">
                             <span class="papertitle">AnCoGen: Analysis, Control and Generation of Speech with a Masked Autoencoder</span>
                         </a>
@@ -197,7 +240,7 @@
                         <br>
                         <em>ICASSP</em>, 2025
                         <br>
-                        <a href="https://samsad35.github.io/site-ancogen/">project page</a>
+                        <a href="https://samsad35.github.io/site-ancogen/">Project page</a>
                         /
                         <a href="https://arxiv.org/abs/2501.05332">arXiv</a>
                         <p></p>
@@ -211,7 +254,7 @@
                 </tr>
 
                 <tr class="hover-yellow" onmouseout="avmae_stop()" onmouseover="avmae_start()">
-                    <td style="padding:16px;width:20%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='avmae'>
                                 <img src="images/VQ-MAE-AV/2.svg" width="160">
@@ -230,7 +273,7 @@
                             avmae_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
                         <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/">
                             <span class="papertitle">A vector quantized masked autoencoder for audiovisual speech emotion recognition</span>
                         </a>
@@ -240,7 +283,7 @@
                         <br>
                         <em>Journal: Computer Vision and Image Understanding</em>, May 2025
                         <br>
-                        <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/">project page</a>
+                        <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/">Project page</a>
                         /
                         <a href="https://arxiv.org/abs/2305.03568">arXiv</a>
                         <p></p>
@@ -251,12 +294,28 @@
                             data.</td>
                 </tr>
 
-                <tr class="hover-yellow">
-                    <td style="padding:16px;width:20%;vertical-align:middle">
-                        <img src='images/russel/russellbased_filter.png' width="160">
+                <tr class="hover-yellow" onmouseout="russel_stop()" onmouseover="russel_start()">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
+                        <div class="one">
+                            <div class="two" id='russel'>
+                                <img src="images/russel/russellbased_filter.png" width="160">
+                            </div>
+                            <img src='images/russel/russel.png' width="160">
+                        </div>
+                        <script type="text/javascript">
+                            function russel_start() {
+                                document.getElementById('russel').style.opacity = "1";
+                            }
+
+                            function russel_stop() {
+                                document.getElementById('russel').style.opacity = "0";
+                            }
+
+                            russel_stop()
+                        </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
-                        <a href="https://samsad35.github.io/VQ-MAE-Speech/">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
+                        <a href="https://centralesupelec.hal.science/hal-05085528/">
                             <span class="papertitle">Can AI Decode the Circumplex Model of Affect? A Data-driven Study</span>
                         </a>
                         <br>
@@ -275,7 +334,7 @@
 
 
                 <tr class="hover-yellow" onmouseout="mdvae_stop()" onmouseover="mdvae_start()">
-                    <td style="padding:16px;width:20%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='mdvae'>
                                 <img src="images/mdvae/gif-4.gif" width="160">
@@ -294,7 +353,7 @@
                             mdvae_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
                         <a href="https://samsad35.github.io/site-mdvae/">
                             <span class="papertitle">A multimodal dynamical variational autoencoder for audiovisual speech representation learning</span>
                         </a>
@@ -304,7 +363,7 @@
                         <br>
                         <em>Journal: Neural Networks</em>, April 2024
                         <br>
-                        <a href="https://samsad35.github.io/site-mdvae/">project page</a>
+                        <a href="https://samsad35.github.io/site-mdvae/">Project page</a>
                         /
                         <a href="https://arxiv.org/abs/2305.03582">arXiv</a>
                         <p></p>
@@ -318,7 +377,7 @@
                 </tr>
 
                 <tr class="hover-yellow" onmouseout="amae_stop()" onmouseover="amae_start()">
-                    <td style="padding:16px;width:20%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='amae'>
                                 <img src="images/VQ-MAE-A/2.svg" width="160">
@@ -337,7 +396,7 @@
                             amae_stop()
                         </script>
                     </td>
-                    <td style="padding:8px;width:80%;vertical-align:middle">
+                    <td style="padding:8px;width:70%;vertical-align:middle">
                         <a href="https://samsad35.github.io/VQ-MAE-Speech/">
                             <span class="papertitle">A vector quantized masked autoencoder for speech emotion recognition</span>
                         </a>
@@ -347,7 +406,7 @@
                         <br>
                         <em>ICASSPW</em>, 2023
                         <br>
-                        <a href="https://samsad35.github.io/VQ-MAE-Speech/">project page</a>
+                        <a href="https://samsad35.github.io/VQ-MAE-Speech/">Project page</a>
                         /
                         <a href="https://arxiv.org/pdf/2304.11117">arXiv</a>
                         <p></p>
@@ -358,7 +417,7 @@
                 </tr>
 
                 <tr class="hover-yellow" onmouseout="sf_stop()" onmouseover="sf_start()">
-                    <td style="padding:16px;width:20%;vertical-align:middle">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
                             <div class="two" id='sf'>
                                 <img src="images/sf-vae/pitch_viz.gif" width="160">
@@ -377,7 +436,7 @@
                             sf_stop()
                         </script>
                     </td>
-                    <td class="hover-yellow" style="padding:8px;width:80%;vertical-align:middle">
+                    <td class="hover-yellow" style="padding:8px;width:75%;vertical-align:middle">
                         <a href="https://samsad35.github.io/site-sfvae/">
                             <span class="papertitle">Learning and controlling the source-filter representation of speech with a variational autoencoder</span>
                         </a>
@@ -387,7 +446,7 @@
                         <br>
                         <em>Journal: Speech Communication</em>, March 2023
                         <br>
-                        <a href="https://samsad35.github.io/site-sfvae/">project page</a>
+                        <a href="https://samsad35.github.io/site-sfvae/">Project page</a>
                         /
                         <a href="https://arxiv.org/abs/2204.07075">arXiv</a>
                         <p></p>
@@ -435,7 +494,7 @@
                 <!--        <br>-->
                 <!--        <em>CVPR</em>, 2025 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>-->
                 <!--        <br>-->
-                <!--        <a href="https://cat-4d.github.io/">project page</a>-->
+                <!--        <a href="https://cat-4d.github.io/">Project page</a>-->
                 <!--        /-->
                 <!--        <a href="https://arxiv.org/abs/2411.18613">arXiv</a>-->
                 <!--        <p></p>-->
