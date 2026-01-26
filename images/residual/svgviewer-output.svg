@@ -3,7 +3,7 @@
    viewBox="0 0 462.15909 272.91245"
    version="1.1"
    id="svg102"
-   sodipodi:docname="residual.svg"
+   sodipodi:docname="svgviewer-output.svg"
    width="462.15909"
    height="272.91245"
    inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
@@ -21,24 +21,23 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.91499617"
-     inkscape:cx="308.19801"
-     inkscape:cy="295.0832"
+     inkscape:zoom="0.647"
+     inkscape:cx="-80.370943"
+     inkscape:cy="139.10355"
      inkscape:window-width="1536"
      inkscape:window-height="827"
      inkscape:window-x="2048"
      inkscape:window-y="166"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g100" />
+     inkscape:current-layer="svg102" />
   <rect
-     width="1031.4164"
+     width="1000"
      height="450"
      fill="#ffffff"
-     rx="10.314164"
+     rx="10"
      id="rect2"
      x="-559.09088"
-     y="-124.626"
-     style="stroke-width:1.01559" />
+     y="-124.626" />
   <g
      transform="translate(-359.09091,-84.626)"
      id="g8">
@@ -130,7 +129,7 @@
        y1="107.94342"
        x2="74.551585"
        y2="107.94342"
-       gradientTransform="matrix(5.0508906,0,0,0.26288354,-54.600426,5.3571335)"
+       gradientTransform="scale(4.383311,0.22813805)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -159,7 +158,7 @@
        y1="72.045536"
        x2="473.97107"
        y2="72.045536"
-       gradientTransform="matrix(0.99425899,0,0,1.0057742,0,-12)"
+       gradientTransform="scale(0.99425899,1.0057742)"
        gradientUnits="userSpaceOnUse" />
     <linearGradient
        inkscape:collect="always"
@@ -319,16 +318,16 @@
      transform="translate(-9.0909091,-24.626)"
      id="g100">
     <text
-       x="175.85965"
-       y="45.687645"
+       x="200"
+       y="35"
        font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
        font-weight="700"
-       font-size="16.1322px"
+       font-size="14px"
        fill="url(#gradTeal)"
        text-anchor="middle"
        letter-spacing="1.2"
        id="text66"
-       style="fill:url(#linearGradient921);stroke-width:1.1523">RT-MAE PARADIGM (PROPOSED)</text>
+       style="fill:url(#linearGradient921)">RT-MAE PARADIGM (PROPOSED)</text>
     <rect
        x="10"
        y="70"
@@ -396,7 +395,7 @@
        style="stroke:url(#linearGradient925)" />
     <rect
        x="250"
-       y="63"
+       y="75"
        width="220"
        height="220"
        rx="22"
@@ -407,7 +406,7 @@
        id="rect84"
        style="stroke:url(#linearGradient927)" />
     <g
-       transform="translate(360,128)"
+       transform="translate(360,140)"
        text-anchor="middle"
        id="g98">
       <path
