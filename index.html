@@ -125,6 +125,46 @@
 
             <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;">
                 <tbody>
+                    <tr class="hover-yellow" onmouseout="equalizer_stop()" onmouseover="equalizer_start()">
+                    <td style="padding:16px;width:25%;vertical-align:middle">
+                        <div class="one">
+                            <div class="two" id='equalizer_image'>
+                                <img src='images/equalizer/equalizer-2.png' width=100%>
+                            </div>
+                            <img src='images/equalizer/Equalizer-Laurent.png' width=100%>
+                        </div>
+                        <script type="text/javascript">
+                            function equalizer_start() {
+                                document.getElementById('equalizer_image').style.opacity = "1";
+                            }
+
+                            function equalizer_stop() {
+                                document.getElementById('equalizer_image').style.opacity = "0";
+                            }
+
+                            equalizer_stop()
+                        </script>
+                    </td>
+                    <td style="padding:8px;width:70%;vertical-align:middle">
+                        <a href="https://samsad35.github.io/site-equalizer/">
+                            <span class="papertitle">The Equalizer: Introducing Shape-Gain Decomposition in Neural Audio Codecs</span>
+                        </a>
+                        <br>
+                        <strong>Samir Sadok*</strong>,
+                        Laurent Girin*,
+                        Xavier Alameda-Pineda
+                        <br>
+                        <em>arXiv
+                        <br>
+                        <a href="https://samsad35.github.io/equalizer-site">Project page</a>
+                        /
+                        <a href="https://arxiv.org/abs/">arXiv</a>
+                        <p></p>
+                        <p class="abstract">
+                            Neural audio codecs jointly encode gain and shape in a single latent space, making them sensitive to level variations and inefficient in bitrate–distortion performance. We introduce a shape–gain decomposition that separately quantizes the gain and processes the normalized shape with the codec, significantly improving efficiency and reducing complexity. </p>
+                    </td>
+                </tr>
+
                     <tr class="hover-yellow" onmouseout="residual_stop()" onmouseover="residual_start()">
                     <td style="padding:16px;width:25%;vertical-align:middle">
                         <div class="one">
