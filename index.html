@@ -611,8 +611,8 @@
         <li><a href="#about"><i class="fa-solid fa-user" style="margin-right: 6px;"></i> About</a></li>
         <li><a href="#news"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> News</a></li>
         <li><a href="#thesis"><i class="fa-solid fa-book" style="margin-right: 6px;"></i> Thesis</a></li>
-        <li><a href="#art"><i class="fa-solid fa-palette" style="margin-right: 6px;"></i> Artworks</a></li>
         <li><a href="#research"><i class="fa-solid fa-microscope" style="margin-right: 6px;"></i> Research</a></li>
+        <li><a href="#art"><i class="fa-solid fa-palette" style="margin-right: 6px;"></i> Artworks</a></li>
         <li><a href="#experience"><i class="fa-solid fa-graduation-cap" style="margin-right: 6px;"></i> Education</a></li>
     </ul>
 </nav>
@@ -667,6 +667,14 @@
                 <h2 class="section-title">News</h2>
                 
                 <div class="news-feed">
+
+                    <div class="news-item">
+                        <div class="news-date">Jun 2026</div>
+                        <div class="news-content">
+                            <span class="news-badge badge-paper">Paper</span>
+                            🎉 Three papers have been accepted at <strong>INTERSPEECH 2026</strong>! Our contributions span self-supervised speech representation analysis with <strong>"InsideSSL"</strong>, discrete speech representations for <strong>3D facial animation</strong>, and <strong>"HybridCodec"</strong>, a hybrid discrete-continuous framework for efficient Speech Language Models.
+                        </div>
+                    </div>
                     
                     <div class="news-item">
                         <div class="news-date">May 2026</div>
@@ -721,33 +729,7 @@
                 </div>
             </section>
 
-            <section id="art" class="art-section">
-                <div class="art-header">
-                    <h2 class="section-title">Drawings & Artworks</h2>
-                    <p>A glimpse into my creative side outside of research.</p>
-                </div>
-
-                <div class="art-grid">
-                    <div class="art-item">
-                        <img src="images/art/1.jpg" alt="Drawing 1">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">My museum</span>
-                        </div>
-                    </div>
-                    <div class="art-item">
-                        <img src="images/art/2.jpg" alt="Drawing 2">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">Charcoal Sketch</span>
-                        </div>
-                    </div>
-                    <div class="art-item">
-                        <img src="images/art/3.jpg" alt="Drawing 3">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">Digital Painting</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
 
             <section id="research" class="research-section">
 
@@ -788,8 +770,37 @@
                     </div>
                 </div> -->
 
+                <div class="pub-card" onmouseover="fadeIn('insideSSL')" onmouseout="fadeOut('insideSSL')">
+                    <div class="pub-image">
+                    <div id="insideSSL" class="pub-hover-image">
+                        <img src="images/insideSSL/2.png" alt="">
+                    </div>
+                    <img src="images/insideSSL/1.png" alt="">
+                    </div>
+                    <div class="pub-content">
+                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
+                        InsideSSL: Understanding Self-Supervised Speech Representations using a Model-Centric Perspective
+                    </a>
+                    <p class="pub-authors">
+                        <strong>Samir Sadok</strong>, Xavier Alameda-Pineda.
+                    </p>
+                    <div class="pub-tags">
+                        <span class="tag conference">INTERSPEECH</span>
+                        <span class="tag conference">Long Format</span>
+                        <span class="tag year">2026</span>
+                    </div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/">arXiv</a>
+                        <a href="https://samsad35.github.io/audio-ssl-dynamics-site/">Project</a>
+                    </div>
+                    <p class="abstract">
+                        This study provides a layer-wise analysis of speech SSL models (Wav2Vec2, HuBERT, and WavLM), characterizing their compression, geometry, and robustness properties while assessing cross-layer functional transferability to reveal how their internal structure shapes the encoding of phonemes, pitch, and speaker identity.
+                    </p>
+                    </div>
+                </div>
 
-                <!-- <div class="pub-card" onmouseover="fadeIn('face_image')" onmouseout="fadeOut('face_image')">
+
+                <div class="pub-card" onmouseover="fadeIn('face_image')" onmouseout="fadeOut('face_image')">
                     <div class="pub-image">
                     <div id="face_image" class="pub-hover-image">
                         <img src="images/face/2.png" alt="">
@@ -804,7 +815,7 @@
                         Pedro R. Correa, Olivier Perrotin, <strong>Samir Sadok</strong>, Paula D. P. Costa, Thomas Hueber.
                     </p>
                     <div class="pub-tags">
-                        <span class="tag conference">arXiv</span>
+                        <span class="tag conference">INTERSPEECH</span>
                         <span class="tag year">2026</span>
                     </div>
                     <div class="pub-links">
@@ -815,9 +826,9 @@
                         Building on this, we introduce an AVTTS pipeline using shared discrete representations to simultaneously decode high-quality speech and 3D facial motion.
                     </p>
                     </div>
-                </div> -->
+                </div>
 
-                <!-- <div class="pub-card" onmouseover="fadeIn('hybrid_image')" onmouseout="fadeOut('hybrid_image')">
+                <div class="pub-card" onmouseover="fadeIn('hybrid_image')" onmouseout="fadeOut('hybrid_image')">
                     <div class="pub-image">
                     <div id="hybrid_image" class="pub-hover-image">
                         <img src="images/hybrid/2.png" alt="">
@@ -829,10 +840,10 @@
                         HybridCodec: Modeling Discrete and Continuous Representations For Efficient Speech Language Models
                     </a>
                     <p class="pub-authors">
-                        Artem Ploujnikov, Francesco Verdini, <strong>Samir Sadok</strong>, Mirco Ravanelli.
+                        Artem Ploujnikov*, Francesco Verdini*, <strong>Samir Sadok</strong>, Mirco Ravanelli.
                     </p>
                     <div class="pub-tags">
-                        <span class="tag conference">arXiv</span>
+                        <span class="tag conference">INTERSPEECH</span>
                         <span class="tag year">2026</span>
                     </div>
                     <div class="pub-links">
@@ -844,7 +855,7 @@
                         a focal modulation codec.
                     </p>
                     </div>
-                </div> -->
+                </div>
 
                 <div class="pub-card" onmouseover="fadeIn('equalizer_image')" onmouseout="fadeOut('equalizer_image')">
                     <div class="pub-image">
@@ -1131,6 +1142,35 @@
     </tr>
     </tbody>
 </table>
+
+<section id="art" class="art-section">
+                <div class="art-header">
+                    <h2 class="section-title">Drawings & Artworks</h2>
+                    <p>A glimpse into my creative side outside of research.</p>
+                </div>
+
+                <div class="art-grid">
+                    <div class="art-item">
+                        <img src="images/art/1.jpg" alt="Drawing 1">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">My museum</span>
+                        </div>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/art/2.jpg" alt="Drawing 2">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">Charcoal Sketch</span>
+                        </div>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/art/3.jpg" alt="Drawing 3">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">Digital Painting</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
 <section id="experience" class="cv-section">
                 <h2 class="section-title">Experience & Education</h2>
                 
