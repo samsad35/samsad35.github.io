@@ -232,151 +232,8 @@
         }
     }
 
-    /* ===== MODERN TIMELINE / CV SECTION ===== */
-    .cv-section {
-        max-width: 1000px;
-        margin: 80px auto;
-        padding: 0 20px;
-    }
-
-    .timeline {
-        position: relative;
-        padding-left: 40px; /* Plus d'espace pour respirer */
-        margin-top: 40px;
-    }
-
-    /* Ligne verticale avec un dégradé élégant */
-    .timeline::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 10px; /* Centré avec le point */
-        width: 2px;
-        background: linear-gradient(to bottom, #4f46e5 0%, rgba(79, 70, 229, 0.1) 100%);
-        border-radius: 2px;
-    }
-
-    .timeline-item {
-        position: relative;
-        margin-bottom: 48px; /* Espacement accentué entre les expériences */
-    }
-
-    .timeline-item:last-child {
-        margin-bottom: 0;
-    }
-
-    /* Le point sur la ligne (double anneau) */
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: -39px; /* Alignement mathématique parfait avec la ligne */
-        top: 6px;
-        width: 14px;
-        height: 14px;
-        background: #ffffff;
-        border: 3px solid #4f46e5;
-        border-radius: 50%;
-        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
-        /* Transition rebondissante (cubic-bezier) */
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 2;
-    }
-
-    /* Animation du point au survol : remplissage et lueur */
-    .timeline-item:hover::before {
-        background: #4f46e5;
-        transform: scale(1.2);
-        box-shadow: 0 0 0 6px rgba(79, 70, 229, 0.2), 0 4px 12px rgba(79, 70, 229, 0.4);
-    }
-
-    /* Badge de date style "Pill" */
-    .timeline-date {
-        display: inline-flex;
-        align-items: center;
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #4f46e5;
-        background: rgba(79, 70, 229, 0.08);
-        padding: 6px 14px;
-        border-radius: 30px;
-        margin-bottom: 12px;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        border: 1px solid rgba(79, 70, 229, 0.1);
-        transition: background 0.3s ease;
-    }
-
-    .timeline-item:hover .timeline-date {
-        background: rgba(79, 70, 229, 0.12);
-    }
-
-    .timeline-title {
-        font-size: 1.3rem;
-        font-weight: 800;
-        color: #111827;
-        margin-bottom: 6px;
-        letter-spacing: -0.01em;
-    }
-
-    .timeline-subtitle {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #4b5563;
-        margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 8px; /* Utilisation de gap pour espacer l'icône proprement */
-    }
-
-    .timeline-subtitle i {
-        color: #8b5cf6; /* Icônes légèrement plus claires que le thème principal */
-    }
-
-    /* Carte de description style Glass/Minimaliste */
-    .timeline-desc {
-        font-size: 0.95rem;
-        color: #4b5563;
-        line-height: 1.7;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(8px);
-        padding: 20px 24px;
-        border-radius: 16px;
-        border: 1px solid rgba(0,0,0,0.04);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Ligne d'accentuation dynamique à gauche de la carte */
-    .timeline-desc::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background: #4f46e5;
-        transform: scaleY(0);
-        transform-origin: bottom;
-        transition: transform 0.3s ease;
-    }
-
-    /* Animation de la carte au survol de l'élément entier */
-    .timeline-item:hover .timeline-desc {
-        transform: translateX(6px); /* Glisse doucement vers la droite au lieu de monter */
-        background: #ffffff;
-        box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-        border-color: rgba(79, 70, 229, 0.15);
-    }
-
-    .timeline-item:hover .timeline-desc::before {
-        transform: scaleY(1); /* Fait "pousser" la ligne violette sur le côté gauche */
-    }
-
     /* ===== SECTIONS ===== */
-    .thesis-section, .art-section, .research-section {
+    .thesis-section, .art-section, .research-section, .cv-section {
         max-width: 1000px;
         margin: 80px auto;
         padding: 0 20px;
@@ -557,8 +414,6 @@
         opacity: 0; transition: opacity 0.3s ease;
     }
 
-    /* --- NOUVELLES RÈGLES CORRIGÉES --- */
-
     /* Fait disparaître l'image 1 (qui est directement dans .pub-image) */
     .pub-card:hover .pub-image > img {
         opacity: 0;
@@ -622,8 +477,6 @@
         padding: 24px 28px;
         border-radius: 16px;
         border: 1px solid rgba(0, 0, 0, 0.05);
-        
-        /* C'est ICI qu'il faut changer la valeur pour tester */
         height: 120px; 
         overflow-y: auto; 
         overflow-x: hidden;
@@ -635,10 +488,9 @@
         align-items: flex-start;
         padding-bottom: 16px;
         border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
-        flex-shrink: 0; /* Empêche les news de s'écraser */
+        flex-shrink: 0; 
     }
 
-    /* La barre de défilement manuelle (le "truc pour défiler") */
     .news-feed::-webkit-scrollbar {
         width: 6px;
     }
@@ -654,25 +506,22 @@
         background: rgba(79, 70, 229, 0.6); 
     }
 
-    /* Supprime la bordure pointillée pour la dernière news */
     .news-item:last-child {
         padding-bottom: 0;
         border-bottom: none;
     }
 
-    /* Style de la date */
     .news-date {
         font-weight: 700;
-        color: #4f46e5; /* Ta couleur primaire violette */
+        color: #4f46e5;
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        min-width: 90px; /* Aligne parfaitement tous les textes de news */
+        min-width: 90px;
         flex-shrink: 0;
         padding-top: 3px;
     }
 
-    /* Contenu de la news */
     .news-content {
         color: #374151;
         line-height: 1.6;
@@ -688,7 +537,6 @@
         text-decoration: underline;
     }
 
-    /* Badges de couleur modernes */
     .news-badge {
         display: inline-block;
         padding: 2px 8px;
@@ -700,13 +548,11 @@
         letter-spacing: 0.02em;
     }
 
-    /* Variations des badges en fonction de la news */
-    .badge-paper { background-color: #e0e7ff; color: #4338ca; }     /* Violet/Bleu */
-    .badge-talk { background-color: #fef3c7; color: #d97706; }      /* Ambre/Jaune */
-    .badge-position { background-color: #d1fae5; color: #065f46; }  /* Vert */
-    .badge-event { background-color: #fce7f3; color: #9d174d; }     /* Rose */
+    .badge-paper { background-color: #e0e7ff; color: #4338ca; }     
+    .badge-talk { background-color: #fef3c7; color: #d97706; }      
+    .badge-position { background-color: #d1fae5; color: #065f46; }  
+    .badge-event { background-color: #fce7f3; color: #9d174d; }     
 
-    /* Responsive : sur petit mobile, la date passe au-dessus du texte */
     @media (max-width: 600px) {
         .news-item {
             flex-direction: column;
@@ -716,56 +562,219 @@
             min-width: auto;
         }
     }
+
+    /* ===== DISCREET TIMELINE (RESEARCH & CV) ===== */
+    .research-timeline {
+        position: relative;
+        padding-left: 32px; /* Espace pour la ligne à gauche */
+        margin-top: 20px;
+    }
+
+    /* La ligne fine et discrète */
+    .research-timeline::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        bottom: 0;
+        left: 8px; 
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(79, 70, 229, 0.25) 0%, rgba(79, 70, 229, 0.03) 100%);
+    }
+
+    /* Le texte de l'année/date (Utilisé dans Research & CV) */
+    .research-year {
+        position: relative;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #6b7280; 
+        margin: 40px 0 20px 0;
+        letter-spacing: 0.05em;
+        transition: color 0.3s ease;
+    }
+
+    /* Supprime la marge haute pour la toute première année */
+    .research-year:first-child, .cv-item-wrap:first-child .research-year {
+        margin-top: 0;
+    }
+
+    /* Le petit point minimaliste sur la ligne */
+    .research-year::before {
+        content: '';
+        position: absolute;
+        left: -27px; /* Alignement avec la ligne */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 7px;
+        height: 7px;
+        background: #cbd5e1; 
+        border-radius: 50%;
+        box-shadow: 0 0 0 6px #fafafa; 
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .research-year:hover::before {
+        background: #4f46e5;
+    }
+
+    /* ===== EPURÉ CV CONTENT ===== */
+    .cv-item-wrap {
+        margin-bottom: 40px;
+    }
+    
+    .cv-item-wrap:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Rapproche la date du titre dans le CV */
+    .cv-item-wrap .research-year {
+        margin-bottom: 8px;
+    }
+
+    /* Effet d'illumination du point au survol de tout le bloc Expérience */
+    .cv-item-wrap:hover .research-year::before {
+        background: #4f46e5;
+    }
+
+    .cv-content {
+        padding-left: 0;
+    }
+
+    .cv-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #111827;
+        margin: 0 0 6px 0;
+        transition: color 0.3s ease;
+    }
+
+    .cv-item-wrap:hover .cv-title {
+        color: #4f46e5;
+    }
+
+    .cv-subtitle {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #6b7280;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .cv-subtitle i {
+        color: #8b5cf6;
+    }
+
+    .cv-desc {
+        font-size: 0.95rem;
+        color: #4b5563;
+        line-height: 1.6;
+    }
+
+    /* ===== RESEARCH SEARCH BAR ===== */
+    .research-controls {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: flex;
+    }
+
+    .search-box {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .search-box i {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        transition: color 0.3s ease;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 14px 20px 14px 44px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 30px;
+        background: #ffffff;
+        font-size: 0.95rem;
+        color: #111827;
+        outline: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .search-box input::placeholder {
+        color: #9ca3af;
+    }
+
+    .search-box input:focus {
+        border-color: rgba(79, 70, 229, 0.4);
+        box-shadow: 0 6px 16px rgba(79, 70, 229, 0.08);
+    }
+
+    .search-box input:focus + i, 
+    .search-box input:not(:placeholder-shown) + i {
+        color: #4f46e5;
+    }
+    
+    .pub-card.hidden, .research-year.hidden {
+        display: none !important;
+    }
     </style>
 
     <script type="text/javascript">
     function fadeIn(id) { document.getElementById(id).style.opacity = 1; }
     function fadeOut(id) { document.getElementById(id).style.opacity = 0; }
     
+    function filterPublications() {
+        const query = document.getElementById('pub-search').value.toLowerCase();
+        // Cible uniquement les années dans la section recherche pour ne pas affecter le CV
+        const researchSection = document.getElementById('research');
+        const years = researchSection.querySelectorAll('.research-year');
+        const cards = researchSection.querySelectorAll('.pub-card');
+        
+        cards.forEach(card => {
+            const textContent = card.innerText.toLowerCase();
+            if (textContent.includes(query)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        years.forEach(year => {
+            let nextElement = year.nextElementSibling;
+            let hasVisibleCards = false;
+            
+            while(nextElement && nextElement.classList.contains('pub-card')) {
+                if (!nextElement.classList.contains('hidden')) {
+                    hasVisibleCards = true;
+                    break;
+                }
+                nextElement = nextElement.nextElementSibling;
+            }
+            
+            if (hasVisibleCards) {
+                year.classList.remove('hidden');
+            } else {
+                year.classList.add('hidden');
+            }
+        });
+    }
+
     window.onload = function() {
-        // Initial state
         ['insideSSL', 'equalizer_image','residual_image','nexf_image','ancogen','avmae','russel','mdvae','amae','sf'].forEach(id => {
             if(document.getElementById(id)) fadeOut(id);
         });
 
-        // --- SCRIPT D'AUTO-SCROLL CORRIGÉ ---
-        // const feed = document.querySelector('.news-feed');
-        // if(feed) {
-        //     let isHovered = false;
-        //     let currentScroll = 0; // Stocke la position exacte avec les décimales
-
-        //     // Pause quand la souris entre
-        //     feed.addEventListener('mouseenter', () => isHovered = true);
-            
-        //     // Reprise quand la souris sort
-        //     feed.addEventListener('mouseleave', () => {
-        //         isHovered = false;
-        //         currentScroll = feed.scrollTop; // Resynchronise si tu as scrollé manuellement
-        //     });
-
-        //     // Synchronise la variable si tu utilises la molette pendant que la souris est dessus
-        //     feed.addEventListener('scroll', () => {
-        //         if (isHovered) {
-        //             currentScroll = feed.scrollTop;
-        //         }
-        //     });
-
-        //     function autoScroll() {
-        //         if (!isHovered) {
-        //             currentScroll += 0.2; // La vitesse est calculée ici en mémoire
-        //             feed.scrollTop = currentScroll; // Le navigateur l'applique
-                    
-        //             // Si on touche le bas, on réinitialise
-        //             if (Math.ceil(feed.scrollTop + feed.clientHeight) >= feed.scrollHeight) {
-        //                 currentScroll = 0;
-        //                 feed.scrollTop = 0;
-        //             }
-        //         }
-        //         requestAnimationFrame(autoScroll);
-        //     }
-            
-        //     requestAnimationFrame(autoScroll);
-        // }
+        const searchInput = document.getElementById('pub-search');
+        if(searchInput) {
+            searchInput.addEventListener('input', filterPublications);
+        }
     }
     </script>
 
@@ -859,14 +868,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="news-item">
-                        <div class="news-date">Jan 2026</div>
-                        <div class="news-content">
-                            <span class="news-badge badge-position">Position</span> 
-                            Excited to announce that I have joined <strong>INRIA</strong> in Grenoble as a Postdoctoral Research Scientist!
-                        </div>
-                    </div> -->
-
                     <div class="news-item">
                         <div class="news-date">Oct 2025</div>
                         <div class="news-content">
@@ -908,400 +909,391 @@
                     </p>
                 </div>
 
-                <!-- ===== Publication Card Template ===== -->
-                <!-- <div class="pub-card" onmouseover="fadeIn('vllm_image')" onmouseout="fadeOut('vllm_image')">
-                    <div class="pub-image">
-                    <div id="vllm_image" class="pub-hover-image">
-                        <img src="images/social/2.png" alt="">
-                    </div>
-                    <img src="images/social/1.png" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
-                        SocialBench: Evaluating Multimodal Perception, Understanding, and Reasoning in Social Settings
-                    </a>
-                    <p class="pub-authors">
-                        Maxime, <strong>Samir Sadok</strong>, Stéphane Lathuilière, Xavier Alameda-Pineda.
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">arXiv</span>
-                        <span class="tag year">2026</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/">arXiv</a>
-                    </div>
-                    <p class="abstract">
-                        We introduce SocialBench, a unified benchmark for evaluating social cognition in Multimodal Large Language Models across perception, understanding, and theory of mind tasks using image, video, and audio inputs.
-                        Experiments reveal that, despite improvements with supervised fine-tuning, current models still exhibit significant “social blindness”, especially in fine-grained non-verbal reasoning such as gaze and micro-expression understanding.
-                    </p>
-                    </div>
-                </div> -->
-
-                <div class="pub-card" onmouseover="fadeIn('insideSSL')" onmouseout="fadeOut('insideSSL')">
-                    <div class="pub-image">
-                    <div id="insideSSL" class="pub-hover-image">
-                        <img src="images/insideSSL/2.gif" alt="">
-                    </div>
-                    <img src="images/insideSSL/1.png" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
-                        InsideSSL: Understanding Self-Supervised Speech Representations using a Model-Centric Perspective
-                    </a>
-                    <p class="pub-authors">
-                        <strong>Samir Sadok</strong>, Xavier Alameda-Pineda.
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">INTERSPEECH</span>
-                        <span class="tag conference">Long Format</span>
-                        <span class="tag year">2026</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/">arXiv</a>
-                        <a href="https://samsad35.github.io/audio-ssl-dynamics-site/">Project</a>
-                    </div>
-                    <p class="abstract">
-                        This study provides a layer-wise analysis of speech SSL models (Wav2Vec2, HuBERT, and WavLM), characterizing their compression, geometry, and robustness properties while assessing cross-layer functional transferability to reveal how their internal structure shapes the encoding of phonemes, pitch, and speaker identity.
-                    </p>
+                <!-- Barre de recherche -->
+                <div class="research-controls">
+                    <div class="search-box">
+                        <input type="text" id="pub-search" placeholder="Search by keyword, author, or conference...">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                 </div>
 
+                <div class="research-timeline">
+                
+                    <div class="research-year">2026</div>
 
-                <div class="pub-card" onmouseover="fadeIn('face_image')" onmouseout="fadeOut('face_image')">
-                    <div class="pub-image">
-                    <div id="face_image" class="pub-hover-image">
-                        <img src="images/face/2.png" alt="">
-                    </div>
-                    <img src="images/face/1.png" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
-                        From Tokens to Faces: Investigating Discrete Speech Representations for 3D Facial Animation
-                    </a>
-                    <p class="pub-authors">
-                        Pedro R. Correa, Olivier Perrotin, <strong>Samir Sadok</strong>, Paula D. P. Costa, Thomas Hueber.
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">INTERSPEECH</span>
-                        <span class="tag year">2026</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/">arXiv</a>
-                    </div>
-                    <p class="abstract">
-                        Evaluating four speech representation families for 3D facial synthesis, we found that phonetic encoding in semantic and label-based representations is vital for accurate facial animation.
-                        Building on this, we introduce an AVTTS pipeline using shared discrete representations to simultaneously decode high-quality speech and 3D facial motion.
-                    </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('hybrid_image')" onmouseout="fadeOut('hybrid_image')">
-                    <div class="pub-image">
-                    <div id="hybrid_image" class="pub-hover-image">
-                        <img src="images/hybrid/2.png" alt="">
-                    </div>
-                    <img src="images/hybrid/1.png" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
-                        HybridCodec: Modeling Discrete and Continuous Representations For Efficient Speech Language Models
-                    </a>
-                    <p class="pub-authors">
-                        Artem Ploujnikov*, Francesco Verdini*, <strong>Samir Sadok</strong>, Mirco Ravanelli.
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">INTERSPEECH</span>
-                        <span class="tag year">2026</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/">arXiv</a>
-                    </div>
-                    <p class="abstract">
-                        To address discretization loss in multimodal LLMs, we propose a hybrid framework combining
-                        temporally compressed discrete tokens with dimensionality-reduced continuous residuals via
-                        a focal modulation codec.
-                    </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('equalizer_image')" onmouseout="fadeOut('equalizer_image')">
-                    <div class="pub-image">
-                    <div id="equalizer_image" class="pub-hover-image">
-                        <img src="images/equalizer/equalizer-2.png" alt="">
-                    </div>
-                    <img src="images/equalizer/Equalizer-Laurent.png" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
-                        The Equalizer: Introducing Shape-Gain Decomposition in Neural Audio Codecs
-                    </a>
-                    <p class="pub-authors">
-                        <strong>Samir Sadok*</strong>, Laurent Girin*, Xavier Alameda-Pineda
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">arXiv</span>
-                        <span class="tag year">2026</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://arxiv.org/abs/2602.15491v1">arXiv</a>
-                    </div>
-                    <p class="abstract">
-                        Neural audio codecs jointly encode gain and shape in a single latent space, making them sensitive 
-                        to level variations and inefficient in bitrate–distortion performance. We introduce a shape–gain 
-                        decomposition that separately quantizes the gain and processes the normalized shape with the codec, 
-                        significantly improving efficiency and reducing complexity.
-                    </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('residual_image')" onmouseout="fadeOut('residual_image')">
-                    <div class="pub-image">
-                    <div id="residual_image" class="pub-hover-image">
-                        <img src="images/residual/residual.svg" alt="">
-                    </div>
-                    <img src="images/residual/residual-1.svg" alt="">
-                    </div>
-                    <div class="pub-content">
-                    <a href="https://samsad35.github.io/site-residual/" class="pub-title">
-                        Residual tokens enhance masked autoencoders for speech modeling
-                    </a>
-                    <p class="pub-authors">
-                        <strong>Samir Sadok*</strong>, Stéphane Lathuilière, Xavier Alameda-Pineda
-                    </p>
-                    <div class="pub-tags">
-                        <span class="tag conference">ICASSP</span>
-                        <span class="tag year">2026</span>
-                        <span class="oral highlight">Oral</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="https://samsad35.github.io/site-residual/">Project page</a> /
-                        <a href="https://arxiv.org/abs/2601.19399v1">arXiv</a>
-                    </div>
-                    <p class="abstract">
-                        RT-MAE leverages Perceiver-style cross-attention to extract unsupervised residual tokens that 
-                        capture natural speech nuances like timbre and emotion. A dropout-based regularization strategy (τ) 
-                        ensures these tokens enhance expressivity without compromising the interpretability or controllability 
-                        of explicit attributes.
-                    </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('nexf_image')" onmouseout="fadeOut('nexf_image')">
-                    <div class="pub-image">
-                        <div id="nexf_image" class="pub-hover-image">
-                            <img src="images/Bringing/analysis.png" alt="analysis">
+                    <div class="pub-card" onmouseover="fadeIn('insideSSL')" onmouseout="fadeOut('insideSSL')">
+                        <div class="pub-image">
+                        <div id="insideSSL" class="pub-hover-image">
+                            <img src="images/insideSSL/2.gif" alt="">
                         </div>
-                        <img src="images/Bringing/synthesis.png" alt="synthesis">
-                    </div>
-                    <div class="pub-content">
-                        <a href="https://arxiv.org/abs/2506.04492" class="pub-title">
-                            Bringing Interpretability to Neural Audio Codecs
+                        <img src="images/insideSSL/1.png" alt="">
+                        </div>
+                        <div class="pub-content">
+                        <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
+                            InsideSSL: Understanding Self-Supervised Speech Representations using a Model-Centric Perspective
                         </a>
                         <p class="pub-authors">
-                            <strong>Samir Sadok*</strong>, Julien Hauret*, Eric Bavu
+                            <strong>Samir Sadok</strong>, Xavier Alameda-Pineda.
                         </p>
                         <div class="pub-tags">
-                            <span class="tag conference">Interspeech</span>
-                            <span class="tag year">2025</span>
-                            <span class="oral highlight">Oral</span>
+                            <span class="tag conference">INTERSPEECH</span>
+                            <span class="tag conference">Long Format</span>
+                            <span class="tag year">2026</span>
                         </div>
                         <div class="pub-links">
-                            <a href="https://samsad35.github.io/site-ancogen/">Project page</a> /
-                            <a href="https://arxiv.org/abs/2506.04492">arXiv</a>
+                            <a href="https://arxiv.org/abs/">arXiv</a>
+                            <a href="https://samsad35.github.io/audio-ssl-dynamics-site/">Project</a>
                         </div>
                         <p class="abstract">
-                            Neural audio codecs efficiently encode continuous speech waveforms into low-rate discrete
-                            units but often lack interpretability because they are optimized mainly for reconstruction.
-                            This work introduces a two-step approach—analysis and synthesis—using AnCoGen to understand
-                            how speech attributes (content, identity, pitch) are encoded and to extract them directly
-                            from codec tokens.
+                            This study provides a layer-wise analysis of speech SSL models (Wav2Vec2, HuBERT, and WavLM), characterizing their compression, geometry, and robustness properties while assessing cross-layer functional transferability to reveal how their internal structure shapes the encoding of phonemes, pitch, and speaker identity.
                         </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('ancogen')" onmouseout="fadeOut('ancogen')">
-                    <div class="pub-image">
-                        <div id="ancogen" class="pub-hover-image">
-                            <img src="images/ancogen/2.svg" alt="AnCoGen hover">
                         </div>
-                        <img src="images/ancogen/overview.svg" alt="AnCoGen overview">
                     </div>
-                    <div class="pub-content">
-                        <a href="https://samsad35.github.io/site-ancogen/" class="pub-title">
-                            AnCoGen: Analysis, Control and Generation of Speech with a Masked Autoencoder
+
+
+                    <div class="pub-card" onmouseover="fadeIn('face_image')" onmouseout="fadeOut('face_image')">
+                        <div class="pub-image">
+                        <div id="face_image" class="pub-hover-image">
+                            <img src="images/face/2.png" alt="">
+                        </div>
+                        <img src="images/face/1.png" alt="">
+                        </div>
+                        <div class="pub-content">
+                        <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
+                            From Tokens to Faces: Investigating Discrete Speech Representations for 3D Facial Animation
                         </a>
                         <p class="pub-authors">
-                            <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda
+                            Pedro R. Correa, Olivier Perrotin, <strong>Samir Sadok</strong>, Paula D. P. Costa, Thomas Hueber.
+                        </p>
+                        <div class="pub-tags">
+                            <span class="tag conference">INTERSPEECH</span>
+                            <span class="tag year">2026</span>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/pdf/2606.13630v1">arXiv</a>
+                        </div>
+                        <p class="abstract">
+                            Evaluating four speech representation families for 3D facial synthesis, we found that phonetic encoding in semantic and label-based representations is vital for accurate facial animation.
+                            Building on this, we introduce an AVTTS pipeline using shared discrete representations to simultaneously decode high-quality speech and 3D facial motion.
+                        </p>
+                        </div>
+                    </div>
+
+                    <div class="pub-card" onmouseover="fadeIn('hybrid_image')" onmouseout="fadeOut('hybrid_image')">
+                        <div class="pub-image">
+                        <div id="hybrid_image" class="pub-hover-image">
+                            <img src="images/hybrid/2.png" alt="">
+                        </div>
+                        <img src="images/hybrid/1.png" alt="">
+                        </div>
+                        <div class="pub-content">
+                        <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
+                            HybridCodec: Modeling Discrete and Continuous Representations For Efficient Speech Language Models
+                        </a>
+                        <p class="pub-authors">
+                            Artem Ploujnikov*, Francesco Verdini*, <strong>Samir Sadok</strong>, Mirco Ravanelli.
+                        </p>
+                        <div class="pub-tags">
+                            <span class="tag conference">INTERSPEECH</span>
+                            <span class="tag year">2026</span>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/">arXiv</a>
+                        </div>
+                        <p class="abstract">
+                            To address discretization loss in multimodal LLMs, we propose a hybrid framework combining
+                            temporally compressed discrete tokens with dimensionality-reduced continuous residuals via
+                            a focal modulation codec.
+                        </p>
+                        </div>
+                    </div>
+
+                    <div class="pub-card" onmouseover="fadeIn('equalizer_image')" onmouseout="fadeOut('equalizer_image')">
+                        <div class="pub-image">
+                        <div id="equalizer_image" class="pub-hover-image">
+                            <img src="images/equalizer/equalizer-2.png" alt="">
+                        </div>
+                        <img src="images/equalizer/Equalizer-Laurent.png" alt="">
+                        </div>
+                        <div class="pub-content">
+                        <a href="https://arxiv.org/abs/2602.15491v1" class="pub-title">
+                            The Equalizer: Introducing Shape-Gain Decomposition in Neural Audio Codecs
+                        </a>
+                        <p class="pub-authors">
+                            <strong>Samir Sadok*</strong>, Laurent Girin*, Xavier Alameda-Pineda
+                        </p>
+                        <div class="pub-tags">
+                            <span class="tag conference">arXiv</span>
+                            <span class="tag year">2026</span>
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://arxiv.org/abs/2602.15491v1">arXiv</a>
+                        </div>
+                        <p class="abstract">
+                            Neural audio codecs jointly encode gain and shape in a single latent space, making them sensitive 
+                            to level variations and inefficient in bitrate–distortion performance. We introduce a shape–gain 
+                            decomposition that separately quantizes the gain and processes the normalized shape with the codec, 
+                            significantly improving efficiency and reducing complexity.
+                        </p>
+                        </div>
+                    </div>
+
+                    <div class="pub-card" onmouseover="fadeIn('residual_image')" onmouseout="fadeOut('residual_image')">
+                        <div class="pub-image">
+                        <div id="residual_image" class="pub-hover-image">
+                            <img src="images/residual/residual.svg" alt="">
+                        </div>
+                        <img src="images/residual/residual-1.svg" alt="">
+                        </div>
+                        <div class="pub-content">
+                        <a href="https://samsad35.github.io/site-residual/" class="pub-title">
+                            Residual tokens enhance masked autoencoders for speech modeling
+                        </a>
+                        <p class="pub-authors">
+                            <strong>Samir Sadok*</strong>, Stéphane Lathuilière, Xavier Alameda-Pineda
                         </p>
                         <div class="pub-tags">
                             <span class="tag conference">ICASSP</span>
-                            <span class="tag year">2025</span>
+                            <span class="tag year">2026</span>
+                            <span class="oral highlight">Oral</span>
                         </div>
                         <div class="pub-links">
-                            <a href="https://samsad35.github.io/site-ancogen/">Project page</a> /
-                            <a href="https://arxiv.org/abs/2501.05332">arXiv</a>
+                            <a href="https://samsad35.github.io/site-residual/">Project page</a> /
+                            <a href="https://arxiv.org/abs/2601.19399v1">arXiv</a>
                         </div>
                         <p class="abstract">
-                            This article presents AnCoGen, a unified masked-autoencoder model that can analyze, control,
-                            and generate speech from key attributes such as speaker identity, pitch, content, and signal
-                            quality, demonstrating strong performance across analysis-resynthesis, pitch estimation and
-                            modification, and speech enhancement tasks.
+                            RT-MAE leverages Perceiver-style cross-attention to extract unsupervised residual tokens that 
+                            capture natural speech nuances like timbre and emotion. A dropout-based regularization strategy (τ) 
+                            ensures these tokens enhance expressivity without compromising the interpretability or controllability 
+                            of explicit attributes.
                         </p>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="research-year">2025</div>
+
+                    <div class="pub-card" onmouseover="fadeIn('nexf_image')" onmouseout="fadeOut('nexf_image')">
+                        <div class="pub-image">
+                            <div id="nexf_image" class="pub-hover-image">
+                                <img src="images/Bringing/analysis.png" alt="analysis">
+                            </div>
+                            <img src="images/Bringing/synthesis.png" alt="synthesis">
+                        </div>
+                        <div class="pub-content">
+                            <a href="https://arxiv.org/abs/2506.04492" class="pub-title">
+                                Bringing Interpretability to Neural Audio Codecs
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok*</strong>, Julien Hauret*, Eric Bavu
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag conference">Interspeech</span>
+                                <span class="tag year">2025</span>
+                                <span class="oral highlight">Oral</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/site-ancogen/">Project page</a> /
+                                <a href="https://arxiv.org/abs/2506.04492">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                Neural audio codecs efficiently encode continuous speech waveforms into low-rate discrete
+                                units but often lack interpretability because they are optimized mainly for reconstruction.
+                                This work introduces a two-step approach—analysis and synthesis—using AnCoGen to understand
+                                how speech attributes (content, identity, pitch) are encoded and to extract them directly
+                                from codec tokens.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pub-card" onmouseover="fadeIn('ancogen')" onmouseout="fadeOut('ancogen')">
+                        <div class="pub-image">
+                            <div id="ancogen" class="pub-hover-image">
+                                <img src="images/ancogen/2.svg" alt="AnCoGen hover">
+                            </div>
+                            <img src="images/ancogen/overview.svg" alt="AnCoGen overview">
+                        </div>
+                        <div class="pub-content">
+                            <a href="https://samsad35.github.io/site-ancogen/" class="pub-title">
+                                AnCoGen: Analysis, Control and Generation of Speech with a Masked Autoencoder
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Gaël Richard, Xavier Alameda-Pineda
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag conference">ICASSP</span>
+                                <span class="tag year">2025</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/site-ancogen/">Project page</a> /
+                                <a href="https://arxiv.org/abs/2501.05332">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This article presents AnCoGen, a unified masked-autoencoder model that can analyze, control,
+                                and generate speech from key attributes such as speaker identity, pitch, content, and signal
+                                quality, demonstrating strong performance across analysis-resynthesis, pitch estimation and
+                                modification, and speech enhancement tasks.
+                            </p>
+                        </div>
+                    </div>
 
 
-                <div class="pub-card" onmouseover="fadeIn('avmae')" onmouseout="fadeOut('avmae')">
-                    <div class="pub-image">
-                        <div id="avmae" class="pub-hover-image">
-                            <img src="images/VQ-MAE-AV/2.svg" alt="VQ-MAE-AV hover">
+                    <div class="pub-card" onmouseover="fadeIn('avmae')" onmouseout="fadeOut('avmae')">
+                        <div class="pub-image">
+                            <div id="avmae" class="pub-hover-image">
+                                <img src="images/VQ-MAE-AV/2.svg" alt="VQ-MAE-AV hover">
+                            </div>
+                            <img src="images/VQ-MAE-AV/1.svg" alt="VQ-MAE-AV overview">
                         </div>
-                        <img src="images/VQ-MAE-AV/1.svg" alt="VQ-MAE-AV overview">
+                        <div class="pub-content">
+                            <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/" class="pub-title">
+                                A vector quantized masked autoencoder for audiovisual speech emotion recognition
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok</strong>, Simon Leglaive, Renaud Séguier
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag journal">Computer Vision and Image Understanding (CVIU)</span>
+                                <span class="tag year">May 2025</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/">Project page</a> /
+                                <a href="https://arxiv.org/abs/2305.03568">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This paper introduces VQ-MAE-AV, <strong>a self-supervised multimodal model</strong> that
+                                learns discrete audiovisual speech representations via masked autoencoders and
+                                vector-quantized VAEs, enabling state-of-the-art emotion recognition with minimal labeled
+                                data.
+                            </p>
+                        </div>
                     </div>
-                    <div class="pub-content">
-                        <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/" class="pub-title">
-                            A vector quantized masked autoencoder for audiovisual speech emotion recognition
-                        </a>
-                        <p class="pub-authors">
-                            <strong>Samir Sadok</strong>, Simon Leglaive, Renaud Séguier
-                        </p>
-                        <div class="pub-tags">
-                            <span class="tag journal">Computer Vision and Image Understanding (CVIU)</span>
-                            <span class="tag year">May 2025</span>
+                    
+                    <div class="pub-card" onmouseover="fadeIn('russel')" onmouseout="fadeOut('russel')">
+                        <div class="pub-image">
+                            <div id="russel" class="pub-hover-image">
+                                <img src="images/russel/russellbased_filter.png" alt="Russell-based hover">
+                            </div>
+                            <img src="images/russel/russel.png" alt="Russell overview">
                         </div>
-                        <div class="pub-links">
-                            <a href="https://samsad35.github.io/VQ-MAE-AudioVisual/">Project page</a> /
-                            <a href="https://arxiv.org/abs/2305.03568">arXiv</a>
+                        <div class="pub-content">
+                            <a href="https://centralesupelec.hal.science/hal-05085528/" class="pub-title">
+                                Can AI Decode the Circumplex Model of Affect? A Data-driven Study
+                            </a>
+                            <p class="pub-authors">
+                                Amdjed Belaref, <strong>Samir Sadok</strong>, Karim M Ibrahim, Zineb Noumir, Renaud Seguier
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag conference">ICPR</span>
+                                <span class="tag year">2025</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://centralesupelec.hal.science/hal-05085528/">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This study uses Transformer-based models on text and audio to uncover emotional latent
+                                spaces, showing that multimodal representations more closely replicate Russell’s circumplex
+                                model of affect and highlighting the benefits of combining modalities in emotion analysis.
+                            </p>
                         </div>
-                        <p class="abstract">
-                            This paper introduces VQ-MAE-AV, <strong>a self-supervised multimodal model</strong> that
-                            learns discrete audiovisual speech representations via masked autoencoders and
-                            vector-quantized VAEs, enabling state-of-the-art emotion recognition with minimal labeled
-                            data.
-                        </p>
                     </div>
-                </div>
+
+                    <div class="research-year">2024</div>
+
+                    <div class="pub-card" onmouseover="fadeIn('mdvae')" onmouseout="fadeOut('mdvae')">
+                        <div class="pub-image">
+                            <div id="mdvae" class="pub-hover-image">
+                                <img src="images/mdvae/gif-4.gif" alt="MDVAE hover">
+                            </div>
+                            <img src="images/mdvae/emotions_interpolation.gif" alt="MDVAE overview">
+                        </div>
+                        <div class="pub-content">
+                            <a href="https://samsad35.github.io/site-mdvae/" class="pub-title">
+                                A multimodal dynamical variational autoencoder for audiovisual speech representation learning
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag journal">Neural Networks</span>
+                                <span class="tag year">April 2024</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/site-mdvae/">Project page</a> /
+                                <a href="https://arxiv.org/abs/2305.03582">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This paper introduces MDVAE, a multimodal and dynamical variational autoencoder that learns
+                                disentangled audiovisual speech representations by separating static, dynamic,
+                                modality-specific, and shared latent factors through a two-stage unsupervised training
+                                pipeline—leveraging VQ-VAE features—and demonstrates strong performance in speech
+                                manipulation, audiovisual denoising, and low-label emotion recognition.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="research-year">2023</div>
+
+                    <div class="pub-card" onmouseover="fadeIn('amae')" onmouseout="fadeOut('amae')">
+                        <div class="pub-image">
+                            <div id="amae" class="pub-hover-image">
+                                <img src="images/VQ-MAE-A/2.svg" alt="VQ-MAE-S hover">
+                            </div>
+                            <img src="images/VQ-MAE-A/1.svg" alt="VQ-MAE-S overview">
+                        </div>
+                        <div class="pub-content">
+                            <a href="https://samsad35.github.io/VQ-MAE-Speech/" class="pub-title">
+                                A vector quantized masked autoencoder for speech emotion recognition
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok</strong>, Simon Leglaive, Renaud Séguier
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag conference">ICASSPW</span>
+                                <span class="tag year">2023</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/VQ-MAE-Speech/">Project page</a> /
+                                <a href="https://arxiv.org/pdf/2304.11117">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This paper presents VQ-MAE-S, a self-supervised speech model combining masked autoencoders
+                                and vector-quantized VAEs, which, when pre-trained on VoxCeleb2 and fine-tuned on emotional
+                                speech, achieves state-of-the-art performance in speech emotion recognition.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pub-card" onmouseover="fadeIn('sf')" onmouseout="fadeOut('sf')">
+                        <div class="pub-image">
+                            <div id="sf" class="pub-hover-image">
+                                <img src="images/sf-vae/pitch_viz.gif" alt="SF-VAE hover">
+                            </div>
+                            <img src="images/sf-vae/source-filter-vae.png" alt="SF-VAE overview">
+                        </div>
+                        <div class="pub-content">
+                            <a href="https://samsad35.github.io/site-sfvae/" class="pub-title">
+                                Learning and controlling the source-filter representation of speech with a variational autoencoder
+                            </a>
+                            <p class="pub-authors">
+                                <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier
+                            </p>
+                            <div class="pub-tags">
+                                <span class="tag journal">Speech Communication</span>
+                                <span class="tag year">March 2023</span>
+                            </div>
+                            <div class="pub-links">
+                                <a href="https://samsad35.github.io/site-sfvae/">Project page</a> /
+                                <a href="https://arxiv.org/abs/2204.07075">arXiv</a>
+                            </div>
+                            <p class="abstract">
+                                This work demonstrates that a VAE trained on unlabeled speech naturally encodes
+                                source-filter factors in orthogonal latent subspaces, allowing accurate, independent control
+                                of fundamental frequency and formants for speech transformation using only a few seconds of
+                                labeled synthetic data.
+                            </p>
+                        </div>
+                    </div>
                 
-                <div class="pub-card" onmouseover="fadeIn('russel')" onmouseout="fadeOut('russel')">
-                    <div class="pub-image">
-                        <div id="russel" class="pub-hover-image">
-                            <img src="images/russel/russellbased_filter.png" alt="Russell-based hover">
-                        </div>
-                        <img src="images/russel/russel.png" alt="Russell overview">
-                    </div>
-                    <div class="pub-content">
-                        <a href="https://centralesupelec.hal.science/hal-05085528/" class="pub-title">
-                            Can AI Decode the Circumplex Model of Affect? A Data-driven Study
-                        </a>
-                        <p class="pub-authors">
-                            Amdjed Belaref, <strong>Samir Sadok</strong>, Karim M Ibrahim, Zineb Noumir, Renaud Seguier
-                        </p>
-                        <div class="pub-tags">
-                            <span class="tag conference">ICPR</span>
-                            <span class="tag year">2025</span>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://centralesupelec.hal.science/hal-05085528/">arXiv</a>
-                        </div>
-                        <p class="abstract">
-                            This study uses Transformer-based models on text and audio to uncover emotional latent
-                            spaces, showing that multimodal representations more closely replicate Russell’s circumplex
-                            model of affect and highlighting the benefits of combining modalities in emotion analysis.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('mdvae')" onmouseout="fadeOut('mdvae')">
-                    <div class="pub-image">
-                        <div id="mdvae" class="pub-hover-image">
-                            <img src="images/mdvae/gif-4.gif" alt="MDVAE hover">
-                        </div>
-                        <img src="images/mdvae/emotions_interpolation.gif" alt="MDVAE overview">
-                    </div>
-                    <div class="pub-content">
-                        <a href="https://samsad35.github.io/site-mdvae/" class="pub-title">
-                            A multimodal dynamical variational autoencoder for audiovisual speech representation learning
-                        </a>
-                        <p class="pub-authors">
-                            <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier
-                        </p>
-                        <div class="pub-tags">
-                            <span class="tag journal">Neural Networks</span>
-                            <span class="tag year">April 2024</span>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://samsad35.github.io/site-mdvae/">Project page</a> /
-                            <a href="https://arxiv.org/abs/2305.03582">arXiv</a>
-                        </div>
-                        <p class="abstract">
-                            This paper introduces MDVAE, a multimodal and dynamical variational autoencoder that learns
-                            disentangled audiovisual speech representations by separating static, dynamic,
-                            modality-specific, and shared latent factors through a two-stage unsupervised training
-                            pipeline—leveraging VQ-VAE features—and demonstrates strong performance in speech
-                            manipulation, audiovisual denoising, and low-label emotion recognition.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('amae')" onmouseout="fadeOut('amae')">
-                    <div class="pub-image">
-                        <div id="amae" class="pub-hover-image">
-                            <img src="images/VQ-MAE-A/2.svg" alt="VQ-MAE-S hover">
-                        </div>
-                        <img src="images/VQ-MAE-A/1.svg" alt="VQ-MAE-S overview">
-                    </div>
-                    <div class="pub-content">
-                        <a href="https://samsad35.github.io/VQ-MAE-Speech/" class="pub-title">
-                            A vector quantized masked autoencoder for speech emotion recognition
-                        </a>
-                        <p class="pub-authors">
-                            <strong>Samir Sadok</strong>, Simon Leglaive, Renaud Séguier
-                        </p>
-                        <div class="pub-tags">
-                            <span class="tag conference">ICASSPW</span>
-                            <span class="tag year">2023</span>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://samsad35.github.io/VQ-MAE-Speech/">Project page</a> /
-                            <a href="https://arxiv.org/pdf/2304.11117">arXiv</a>
-                        </div>
-                        <p class="abstract">
-                            This paper presents VQ-MAE-S, a self-supervised speech model combining masked autoencoders
-                            and vector-quantized VAEs, which, when pre-trained on VoxCeleb2 and fine-tuned on emotional
-                            speech, achieves state-of-the-art performance in speech emotion recognition.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="pub-card" onmouseover="fadeIn('sf')" onmouseout="fadeOut('sf')">
-                    <div class="pub-image">
-                        <div id="sf" class="pub-hover-image">
-                            <img src="images/sf-vae/pitch_viz.gif" alt="SF-VAE hover">
-                        </div>
-                        <img src="images/sf-vae/source-filter-vae.png" alt="SF-VAE overview">
-                    </div>
-                    <div class="pub-content">
-                        <a href="https://samsad35.github.io/site-sfvae/" class="pub-title">
-                            Learning and controlling the source-filter representation of speech with a variational autoencoder
-                        </a>
-                        <p class="pub-authors">
-                            <strong>Samir Sadok</strong>, Simon Leglaive, Laurent Girin, Xavier Alameda-Pineda, Renaud Séguier
-                        </p>
-                        <div class="pub-tags">
-                            <span class="tag journal">Speech Communication</span>
-                            <span class="tag year">March 2023</span>
-                        </div>
-                        <div class="pub-links">
-                            <a href="https://samsad35.github.io/site-sfvae/">Project page</a> /
-                            <a href="https://arxiv.org/abs/2204.07075">arXiv</a>
-                        </div>
-                        <p class="abstract">
-                            This work demonstrates that a VAE trained on unlabeled speech naturally encodes
-                            source-filter factors in orthogonal latent subspaces, allowing accurate, independent control
-                            of fundamental frequency and formants for speech transformation using only a few seconds of
-                            labeled synthetic data.
-                        </p>
-                    </div>
                 </div>
             </section>     
         </td>
@@ -1341,41 +1333,47 @@
 <section id="experience" class="cv-section">
                 <h2 class="section-title">Experience & Education</h2>
                 
-                <div class="timeline">
+                <div class="research-timeline">
                     
                     <!-- Expérience 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">05/2024 - Present</div>
-                        <h3 class="timeline-title">Postdoctoral Researcher</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fa-solid fa-building"></i> INRIA, Université Grenoble Alpes, CNRS, LJK
-                        </div>
-                        <div class="timeline-desc">
-                            Deep Information Geometry. Studying theoretical and practical links between (Dynamical) VAEs, diffusion models, and normalizing flows. Developing a statistical manifold framework to analyze their training dynamics and improve adaptation efficiency.
+                    <div class="cv-item-wrap">
+                        <div class="research-year">05/2024 - Present</div>
+                        <div class="cv-content">
+                            <h3 class="cv-title">Postdoctoral Researcher</h3>
+                            <div class="cv-subtitle">
+                                <i class="fa-solid fa-building"></i> INRIA, Université Grenoble Alpes, CNRS, LJK
+                            </div>
+                            <div class="cv-desc">
+                                Deep Information Geometry. Studying theoretical and practical links between (Dynamical) VAEs, diffusion models, and normalizing flows. Developing a statistical manifold framework to analyze their training dynamics and improve adaptation efficiency.
+                            </div>
                         </div>
                     </div>
 
                     <!-- Éducation 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">11/2020 - 03/2024</div>
-                        <h3 class="timeline-title">Ph.D. in Artificial intelligence (AI)</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fa-solid fa-graduation-cap"></i> Centrale Supélec, IETR
-                        </div>
-                        <div class="timeline-desc">
-                            Thesis: Audiovisual Speech Representation Learning for Emotion Recognition. Addressed label scarcity and emotional ambiguity through unsupervised and self-supervised deep generative models. Focused on representation learning, disentanglement, and model interpretability.
+                    <div class="cv-item-wrap">
+                        <div class="research-year">11/2020 - 03/2024</div>
+                        <div class="cv-content">
+                            <h3 class="cv-title">Ph.D. in Artificial intelligence (AI)</h3>
+                            <div class="cv-subtitle">
+                                <i class="fa-solid fa-graduation-cap"></i> Centrale Supélec, IETR
+                            </div>
+                            <div class="cv-desc">
+                                Thesis: Audiovisual Speech Representation Learning for Emotion Recognition. Addressed label scarcity and emotional ambiguity through unsupervised and self-supervised deep generative models. Focused on representation learning, disentanglement, and model interpretability.
+                            </div>
                         </div>
                     </div>
 
                     <!-- Expérience 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-date">03/2020 - 08/2020</div>
-                        <h3 class="timeline-title">Junior Researcher</h3>
-                        <div class="timeline-subtitle">
-                            <i class="fa-solid fa-briefcase"></i> Orange Labs
-                        </div>
-                        <div class="timeline-desc">
-                            Deep learning for emotion recognition in speech signals.
+                    <div class="cv-item-wrap">
+                        <div class="research-year">03/2020 - 08/2020</div>
+                        <div class="cv-content">
+                            <h3 class="cv-title">Junior Researcher</h3>
+                            <div class="cv-subtitle">
+                                <i class="fa-solid fa-briefcase"></i> Orange Labs
+                            </div>
+                            <div class="cv-desc">
+                                Deep learning for emotion recognition in speech signals.
+                            </div>
                         </div>
                     </div>
 
