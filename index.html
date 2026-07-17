@@ -435,14 +435,77 @@
 
     .pub-authors { font-size: 0.95rem; margin: 4px 0 8px; color: #111827; }
     
-    .pub-tags { margin-bottom: 8px; }
-    .pub-tags .tag {
-        display: inline-block; margin-right: 8px; padding: 2px 8px;
-        border-radius: 8px; font-size: 0.8rem; background-color: #e0e7ff; color: #4f46e5;
+    /*.pub-tags { margin-bottom: 8px; }*/
+    /*.pub-tags .tag {*/
+    /*    display: inline-block; margin-right: 8px; padding: 2px 8px;*/
+    /*    border-radius: 8px; font-size: 0.8rem; background-color: #e0e7ff; color: #4f46e5;*/
+    /*}*/
+    /*.pub-tags .oral {*/
+    /*    display: inline-block; margin-right: 8px; padding: 2px 8px;*/
+    /*    border-radius: 8px; font-size: 0.8rem; background-color: #ffe0e0; color: #e54646;*/
+    /*}*/
+
+    /* ===== MODERN PUB TAGS ===== */
+    .pub-tags {
+        margin-bottom: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px; /* Remplace les margin-right et gère le retour à la ligne */
     }
+
+    .pub-tags span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px; /* Espace entre l'icône et le texte */
+        padding: 4px 12px;
+        border-radius: 20px; /* Style "Pill" moderne */
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        cursor: default; /* Indique que ce n'est pas un bouton cliquable */
+    }
+
+    /* Style Conférence (Bleu Inria/Indigo) */
+    .pub-tags .conference {
+        background-color: rgba(79, 70, 229, 0.08);
+        color: #4f46e5;
+        border-color: rgba(79, 70, 229, 0.15);
+    }
+
+    /* Style Journal (Vert émeraude) */
+    .pub-tags .journal {
+        background-color: rgba(16, 185, 129, 0.08);
+        color: #059669;
+        border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    /* Style Année (Gris neutre) */
+    .pub-tags .year {
+        background-color: #f3f4f6;
+        color: #4b5563;
+        border-color: #e5e7eb;
+    }
+
+    /* Style "Oral" (Gradient Rouge/Rosé pour sortir du lot) */
     .pub-tags .oral {
-        display: inline-block; margin-right: 8px; padding: 2px 8px;
-        border-radius: 8px; font-size: 0.8rem; background-color: #ffe0e0; color: #e54646;
+        background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+        color: #e11d48;
+        border-color: #fecdd3;
+        box-shadow: 0 2px 4px rgba(225, 29, 72, 0.05);
+    }
+
+    /* Effets dynamiques au survol */
+    .pub-tags span:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .pub-tags .oral:hover {
+        box-shadow: 0 4px 10px rgba(225, 29, 72, 0.15);
+        border-color: #fda4af;
     }
 
     .pub-links a {
@@ -669,6 +732,29 @@
         font-size: 0.95rem;
         color: #4b5563;
         line-height: 1.6;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-top: 0;
+    }
+
+    /* Animation au survol du conteneur parent */
+    .cv-item-wrap:hover .cv-desc {
+        opacity: 1;
+        max-height: 200px; /* Taille suffisante pour ton texte */
+        margin-top: 12px;
+    }
+
+    /* Optionnel : ajoute un léger décalage au titre pour signifier qu'il est "cliquable" ou interactif */
+    .cv-item-wrap {
+        padding: 10px;
+        border-radius: 12px;
+        transition: background 0.3s ease;
+    }
+
+    .cv-item-wrap:hover {
+        background: rgba(79, 70, 229, 0.02);
     }
 
     /* ===== RESEARCH SEARCH BAR ===== */
@@ -788,8 +874,8 @@
         <li><a href="#news"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> News</a></li>
         <li><a href="#thesis"><i class="fa-solid fa-book" style="margin-right: 6px;"></i> Thesis</a></li>
         <li><a href="#research"><i class="fa-solid fa-microscope" style="margin-right: 6px;"></i> Research</a></li>
-        <li><a href="#art"><i class="fa-solid fa-palette" style="margin-right: 6px;"></i> Artworks</a></li>
         <li><a href="#experience"><i class="fa-solid fa-graduation-cap" style="margin-right: 6px;"></i> Education</a></li>
+        <li><a href="#art"><i class="fa-solid fa-palette" style="margin-right: 6px;"></i> Artworks</a></li>
     </ul>
 </nav>
 
@@ -936,10 +1022,10 @@
                             <strong>Samir Sadok</strong>, Xavier Alameda-Pineda.
                         </p>
                         <div class="pub-tags">
-                            <span class="tag conference">INTERSPEECH</span>
+                            <span class="tag conference"><i class="fa-solid fa-users-rectangle"></i> INTERSPEECH</span>
+                            <span class="tag year"><i class="fa-regular fa-calendar"></i> 2026</span>
+                            <span class="oral highlight"><i class="fa-solid fa-microphone-lines"></i> Oral</span>
                             <span class="tag conference">Long Format Track</span>
-                            <span class="tag year">2026</span>
-                            <span class="oral highlight">Oral</span>
                         </div>
                         <div class="pub-links">
                             <a href="https://arxiv.org/abs/2607.06392">arXiv</a>
@@ -967,7 +1053,7 @@
                             Pedro R. Correa, Olivier Perrotin, <strong>Samir Sadok</strong>, Paula D. P. Costa, Thomas Hueber.
                         </p>
                         <div class="pub-tags">
-                            <span class="tag conference">INTERSPEECH</span>
+                            <span class="tag conference"><i class="fa-solid fa-users-rectangle"></i> INTERSPEECH</span>
                             <span class="tag year">2026</span>
                         </div>
                         <div class="pub-links">
@@ -996,9 +1082,9 @@
                             Artem Ploujnikov*, Francesco Verdini*, <strong>Samir Sadok</strong>, Mirco Ravanelli.
                         </p>
                         <div class="pub-tags">
-                            <span class="tag conference">INTERSPEECH</span>
-                            <span class="tag year">2026</span>
-                            <span class="oral highlight">Oral</span>
+                            <span class="tag conference"><i class="fa-solid fa-users-rectangle"></i> INTERSPEECH</span>
+                            <span class="tag year"><i class="fa-regular fa-calendar"></i> 2026</span>
+                            <span class="oral highlight"><i class="fa-solid fa-microphone-lines"></i> Oral</span>
                         </div>
                         <div class="pub-links">
                             <a href="https://arxiv.org/abs/2606.27627">arXiv</a>
@@ -1059,7 +1145,7 @@
                         <div class="pub-tags">
                             <span class="tag conference">ICASSP</span>
                             <span class="tag year">2026</span>
-                            <span class="oral highlight">Oral</span>
+                            <span class="oral highlight"><i class="fa-solid fa-microphone-lines"></i> Oral</span>
                         </div>
                         <div class="pub-links">
                             <a href="https://samsad35.github.io/site-residual/">Project page</a> /
@@ -1093,7 +1179,7 @@
                             <div class="pub-tags">
                                 <span class="tag conference">Interspeech</span>
                                 <span class="tag year">2025</span>
-                                <span class="oral highlight">Oral</span>
+                                <span class="oral highlight"><i class="fa-solid fa-microphone-lines"></i> Oral</span>
                             </div>
                             <div class="pub-links">
                                 <a href="https://samsad35.github.io/site-ancogen/">Project page</a> /
@@ -1306,33 +1392,6 @@
     </tbody>
 </table>
 
-<section id="art" class="art-section">
-                <div class="art-header">
-                    <h2 class="section-title">Drawings & Artworks</h2>
-                    <p>A glimpse into my creative side outside of research.</p>
-                </div>
-
-                <div class="art-grid">
-                    <div class="art-item">
-                        <img src="images/art/1.jpg" alt="Drawing 1">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">My museum</span>
-                        </div>
-                    </div>
-                    <div class="art-item">
-                        <img src="images/art/2.jpg" alt="Drawing 2">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">Charcoal Sketch</span>
-                        </div>
-                    </div>
-                    <div class="art-item">
-                        <img src="images/art/3.jpg" alt="Drawing 3">
-                        <div class="art-overlay">
-                            <span class="art-overlay-title">Digital Painting</span>
-                        </div>
-                    </div>
-                </div>
-        </section>
 
 <section id="experience" class="cv-section">
                 <h2 class="section-title">Experience & Education</h2>
@@ -1383,5 +1442,35 @@
 
                 </div>
             </section>
+
+
+
+<section id="art" class="art-section">
+                <div class="art-header">
+                    <h2 class="section-title">Drawings & Artworks</h2>
+                    <p>A glimpse into my creative side outside of research.</p>
+                </div>
+
+                <div class="art-grid">
+                    <div class="art-item">
+                        <img src="images/art/1.jpg" alt="Drawing 1">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">My museum</span>
+                        </div>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/art/2.jpg" alt="Drawing 2">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">Charcoal Sketch</span>
+                        </div>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/art/3.jpg" alt="Drawing 3">
+                        <div class="art-overlay">
+                            <span class="art-overlay-title">Digital Painting</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
 </body>
 </html>
