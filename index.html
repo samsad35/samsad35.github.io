@@ -3,6 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <title>Samir S.</title>
@@ -11,68 +14,339 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/s.png" type="image/x-icon">
     
+    <script>
+    /* Par défaut, le thème original blanc est appliqué sauf si l'utilisateur a explicitement choisi 'dark' */
+    (function() {
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            const theme = savedTheme ? savedTheme : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch(e) {}
+    })();
+    </script>
+
     <style>
+    /* ===== THEME VARIABLES (PURE WHITE ORIGINAL & DARK MODE) ===== */
+    :root {
+        --bg-page: #ffffff;
+        --bg-gradient: #ffffff;
+        --text-primary: #111827;
+        --text-secondary: #4b5563;
+        --text-muted: #6b7280;
+        --card-bg: #ffffff;
+        --card-hover: rgba(79, 70, 229, 0.03);
+        --card-border: rgba(0, 0, 0, 0.06);
+        --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+        --nav-bg: rgba(255, 255, 255, 0.92);
+        --nav-border: rgba(0, 0, 0, 0.06);
+        --btn-bg: #ffffff;
+        --btn-border: rgba(0, 0, 0, 0.08);
+        --btn-text: #111827;
+        --btn-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        --search-bg: #ffffff;
+        --search-border: rgba(0, 0, 0, 0.08);
+        --accent: #4f46e5;
+        --accent-hover: #4338ca;
+        --accent-light: rgba(79, 70, 229, 0.08);
+        --timeline-dot-ring: #ffffff;
+        --tag-year-bg: #f3f4f6;
+        --tag-year-text: #4b5563;
+        --tag-year-border: #e5e7eb;
+    }
+
+    [data-theme="dark"] {
+        --bg-page: #0f172a;
+        --bg-gradient: #0f172a;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #64748b;
+        --card-bg: #1e293b;
+        --card-hover: rgba(99, 102, 241, 0.08);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --card-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5);
+        --nav-bg: rgba(15, 23, 42, 0.88);
+        --nav-border: rgba(255, 255, 255, 0.08);
+        --btn-bg: #1e293b;
+        --btn-border: rgba(255, 255, 255, 0.12);
+        --btn-text: #f8fafc;
+        --btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        --search-bg: #151e33;
+        --search-border: rgba(255, 255, 255, 0.12);
+        --accent: #818cf8;
+        --accent-hover: #a5b4fc;
+        --accent-light: rgba(129, 140, 248, 0.15);
+        --timeline-dot-ring: #0f172a;
+        --tag-year-bg: #1e293b;
+        --tag-year-text: #cbd5e1;
+        --tag-year-border: rgba(255, 255, 255, 0.1);
+    }
+
     /* ===== BASE & SCROLL ===== */
     html {
         scroll-behavior: smooth;
-        /* Évite que le menu sticky ne cache le titre de la section */
-        scroll-padding-top: 80px; 
+        scroll-padding-top: 96px; 
+        background-color: var(--bg-page);
+    }
+
+    body, table, td, div, p, span, a, input, button {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.01em;
     }
 
     body, table, td, div {
         font-size: 15px !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    body { margin: 0; padding: 0; }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-page) !important;
+        color: var(--text-primary);
+        min-height: 100vh;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
     a {
         font-size: 15px !important;
-        color: #434BDE;
+        color: var(--accent);
     }
     h2 {
         font-size: 1.5em !important;
-        color: #43457A !important;
+        color: var(--text-primary) !important;
+        letter-spacing: -0.02em;
     }
 
-    /* ===== NAVIGATION MENU (Glassmorphism) ===== */
-    .top-nav {
+    /* ===== MODERN RESEARCH NAVIGATION & SUBTLE TICKER ===== */
+    .site-header {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 15px 20px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--nav-border);
+        box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.03);
+        transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .top-nav {
+        padding: 10px 24px;
         display: flex;
         justify-content: center;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ===== SUBTLE NEWS TICKER BAR (BELOW MENU) ===== */
+    .news-ticker-bar {
+        border-top: 1px solid var(--nav-border);
+        background: rgba(0, 0, 0, 0.018);
+        font-size: 0.82rem;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="dark"] .news-ticker-bar {
+        background: rgba(15, 23, 42, 0.7);
+        border-top-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .ticker-container {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        overflow: hidden;
+    }
+
+    .ticker-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        text-decoration: none !important;
+        background: var(--accent-light);
+        padding: 2px 8px;
+        border-radius: 12px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: transform 0.2s ease;
+    }
+
+    .ticker-label:hover {
+        transform: scale(1.04);
+    }
+
+    .ticker-pulse {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #10b981;
+        box-shadow: 0 0 6px #10b981;
+        animation: statusBlink 1.8s infinite;
+    }
+
+    .ticker-viewport {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+    }
+
+    .ticker-track {
+        display: flex;
+        width: max-content;
+        will-change: transform;
+        animation: tickerScroll 42s linear infinite;
+    }
+
+    .ticker-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes tickerScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    .ticker-items {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    .ticker-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+    }
+
+    .ticker-date {
+        font-weight: 600;
+        color: #10b981;
+        font-size: 0.72rem;
+        background: rgba(16, 185, 129, 0.1);
+        padding: 1px 5px;
+        border-radius: 4px;
+        letter-spacing: 0.02em;
+    }
+
+    .ticker-item a {
+        color: var(--text-secondary) !important;
+        text-decoration: none !important;
+        font-size: 0.8rem !important;
+        transition: color 0.2s ease;
+    }
+
+    .ticker-item a strong {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .ticker-item:hover a, .ticker-item a:hover {
+        color: var(--accent) !important;
+    }
+
+    .ticker-item:hover a strong {
+        color: var(--accent);
+    }
+
+    .ticker-sep {
+        margin: 0 16px;
+        color: var(--text-muted);
+        opacity: 0.4;
+        font-size: 0.65rem;
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
     }
 
     .nav-links {
         list-style: none;
         display: flex;
-        gap: 15px;
+        gap: 8px;
         margin: 0;
         padding: 0;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
     }
 
     .nav-links a {
         text-decoration: none !important;
-        color: #111827 !important;
-        font-weight: 600;
-        font-size: 0.95rem !important;
-        padding: 8px 16px;
-        border-radius: 20px;
+        color: var(--text-secondary) !important;
+        font-weight: 500;
+        font-size: 0.92rem !important;
+        letter-spacing: -0.01em;
+        padding: 6px 14px;
+        border-radius: 8px;
         transition: all 0.2s ease;
     }
 
     .nav-links a:hover {
-        background: rgba(79, 70, 229, 0.08);
-        color: #4f46e5 !important;
+        background: var(--accent-light);
+        color: var(--accent) !important;
+    }
+
+    /* ===== THEME TOGGLE BUTTON EN HAUT À DROITE ===== */
+    .theme-toggle-btn {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        color: var(--text-primary);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--btn-shadow);
+        font-size: 0.95rem;
+    }
+
+    .theme-toggle-btn:hover {
+        transform: translateY(-50%) scale(1.1);
+        color: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+    }
+
+    @media (max-width: 800px) {
+        .nav-container {
+            justify-content: space-between;
+        }
+        .theme-toggle-btn {
+            position: static;
+            transform: none;
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.08);
+        }
     }
 
     /* ===== HERO SECTION ===== */
@@ -90,21 +364,21 @@
         padding: 10px 20px;
         font-size: 0.95rem !important;
         font-weight: 600;
-        color: #111827 !important;
-        background-color: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.08);
+        color: var(--btn-text) !important;
+        background-color: var(--btn-bg);
+        border: 1px solid var(--btn-border);
         border-radius: 50px;
         text-decoration: none !important;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        box-shadow: var(--btn-shadow);
     }
 
     .hero-link-btn:hover {
-        color: #4f46e5 !important;
-        border-color: rgba(79, 70, 229, 0.3);
-        background-color: rgba(79, 70, 229, 0.03);
+        color: var(--accent) !important;
+        border-color: var(--accent);
+        background-color: var(--accent-light);
         transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(79, 70, 229, 0.1);
+        box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
     }
 
     .hero-link-btn i {
@@ -131,28 +405,38 @@
     .hero-name {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #111827;
+        color: var(--text-primary);
         margin-bottom: 20px;
     }
 
     .hero-description {
         font-size: 1rem;
         line-height: 1.7;
-        color: #4b5563;
+        color: var(--text-secondary);
         margin-bottom: 25px;
     }
 
-    /* ===== MODERNIZED HERO IMAGE ===== */
+    /* ===== HERO IMAGE WITH AUDIO WAVEFORM DISTORTION ===== */
+    .hero-image-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .hero-image {
         position: relative;
+        width: 270px;
+        height: 270px;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Animation de flottement continue */
         animation: float 6s ease-in-out infinite;
+        cursor: pointer;
     }
 
-    /* Lueur (Glow) colorée en arrière-plan */
+    /* Lueur colorée en arrière-plan */
     .hero-image::before {
         content: "";
         position: absolute;
@@ -163,7 +447,6 @@
         filter: blur(25px);
         opacity: 0.4;
         transition: opacity 0.4s ease, filter 0.4s ease;
-        /* Animation de morphing synchronisée avec l'image */
         animation: morph 8s ease-in-out infinite;
     }
 
@@ -171,30 +454,50 @@
         width: 260px;
         height: 260px;
         object-fit: cover;
-        /* Bordure blanche pour le contraste */
-        border: 4px solid rgba(255, 255, 255, 0.9);
+        border: 4px solid rgba(255, 255, 255, 0.95);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        /* Animation fluide des déformations */
         animation: morph 8s ease-in-out infinite;
-        /* Transition rebondissante pour le survol */
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: border-radius 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+        z-index: 1;
+        /* Application du filtre SVG de distorsion de waveform */
+        filter: url(#audio-waveform-distort);
+        will-change: filter, transform;
     }
 
-    /* Effets interactifs au survol */
+    /* Au survol : transformation en cercle net et pause de l'animation blob */
     .hero-image:hover img {
-        transform: scale(1.05) translateY(-5px);
-        /* Retour à un cercle parfait au survol pour plus de clarté */
         border-radius: 50%;
         border-color: #ffffff;
-        box-shadow: 0 15px 40px rgba(79, 70, 229, 0.25);
-        /* Met l'animation en pause quand on regarde l'image */
-        animation-play-state: paused; 
+        box-shadow: 0 15px 45px rgba(79, 70, 229, 0.4), 0 0 20px rgba(56, 189, 248, 0.3);
+        animation-play-state: paused;
     }
 
     .hero-image:hover::before {
-        opacity: 0.7;
+        opacity: 0.85;
         filter: blur(35px);
+        border-radius: 50%;
         animation-play-state: paused;
+    }
+
+    /* Canvas d'onde sonore oscillante en surimpression */
+    .waveform-canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 260px;
+        height: 260px;
+        margin-top: -130px;
+        margin-left: -130px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .hero-image:hover .waveform-canvas {
+        opacity: 1;
     }
 
     /* --- Keyframes pour les animations --- */
@@ -220,11 +523,14 @@
             text-align: center;
             gap: 40px;
         }
-        .hero-image img {
+        .hero-image, .hero-image img, .waveform-canvas {
             width: 210px;
             height: 210px;
         }
-        /* Flottement réduit sur mobile pour éviter les bugs de scroll */
+        .waveform-canvas {
+            margin-top: -105px;
+            margin-left: -105px;
+        }
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
@@ -243,93 +549,88 @@
         font-size: 1.6rem !important;
         font-weight: 700;
         margin-bottom: 25px;
-        color: #111827 !important;
+        color: var(--text-primary) !important;
     }
 
-    /* ==== MODERN THESIS CARD ==== */
-    .thesis-card {
-        position: relative;
-        padding: 32px 36px; /* Plus d'espace pour un look aéré */
-        border-radius: 16px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.04);
-        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03); /* Ombre douce de base */
-        /* Transition fluide avec rebond */
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        overflow: hidden;
+    /* ==== THESIS SECTION (Clean & Sober Academic Format) ==== */
+    .thesis-section {
+        max-width: 1000px;
+        margin: 50px auto 70px auto;
+        padding: 0 20px;
     }
 
-    /* Barre d'accentuation en haut qui s'illumine au survol */
-    .thesis-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, #4f46e5, #818cf8);
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .thesis-card:hover {
-        transform: translateY(-6px);
-        /* Ombre teintée en violet pour un effet "Glow" */
-        box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
-        border-color: rgba(79, 70, 229, 0.1);
-        background: linear-gradient(to bottom right, #ffffff, #fcfcfd);
-    }
-
-    .thesis-card:hover::before {
-        opacity: 1;
-    }
-
-    .thesis-link { 
-        text-decoration: none; 
-        color: inherit; 
-        display: block; /* Rend toute la zone du titre cliquable proprement */
+    .thesis-entry {
+        padding: 6px 0;
     }
 
     .thesis-title {
-        font-size: 1.35rem;
-        font-weight: 800;
-        margin-bottom: 16px;
-        color: #111827;
-        line-height: 1.4;
-        letter-spacing: -0.01em;
-        transition: color 0.3s ease;
-        display: flex;
-        flex-direction: column; /* Permet de séparer le titre de la date/école */
-        gap: 8px;
+        font-size: 1.22rem !important;
+        font-weight: 600;
+        color: var(--text-primary) !important;
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 6px;
+        line-height: 1.45;
+        transition: color 0.2s ease;
     }
 
-    .thesis-card:hover .thesis-title { 
-        color: #4f46e5; 
+    .thesis-title:hover {
+        color: var(--accent) !important;
     }
 
-    /* Transformation des métadonnées (date/école) en badge stylisé */
-    .thesis-meta { 
-        align-self: flex-start; /* Aligne le badge à gauche */
-        font-size: 0.85rem; 
-        font-weight: 600; 
-        color: #6366f1; 
-        background: rgba(99, 102, 241, 0.1);
-        padding: 4px 12px;
-        border-radius: 20px;
-        margin-left: 0;
-        letter-spacing: 0.02em;
+    .thesis-authors {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        margin: 4px 0 6px 0;
+        line-height: 1.55;
     }
 
-    .thesis-description { 
-        font-size: 1rem; 
-        line-height: 1.7; 
-        color: #4b5563; 
+    .thesis-authors strong {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .thesis-authors a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .thesis-authors a:hover {
+        text-decoration: underline;
+    }
+
+    .thesis-meta-text {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+    }
+
+    .thesis-links {
+        margin: 6px 0 12px 0;
+        font-size: 0.95rem;
+    }
+
+    .thesis-links a {
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--accent);
+    }
+
+    .thesis-links a:hover {
+        text-decoration: underline;
+    }
+
+    .thesis-description {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
         margin: 0;
     }
     
     /* ===== ARTWORKS SECTION ===== */
     .art-header p, .section-header p {
-        color: #4b5563;
+        color: var(--text-secondary);
         font-size: 1.05rem;
         margin-top: 8px;
         line-height: 1.6;
@@ -346,18 +647,18 @@
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        background: #ffffff;
-        border: 1px solid rgba(0,0,0,0.05);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
         aspect-ratio: 4 / 5;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         transition: all 0.3s ease;
         cursor: pointer;
     }
 
     .art-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        border-color: rgba(79, 70, 229, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-color: var(--accent);
     }
 
     .art-item img {
@@ -372,7 +673,7 @@
     .art-overlay {
         position: absolute;
         bottom: 0; left: 0; right: 0;
-        background: linear-gradient(to top, rgba(17, 24, 39, 0.8), transparent);
+        background: linear-gradient(to top, rgba(17, 24, 39, 0.88), transparent);
         padding: 30px 20px 20px 20px;
         color: #ffffff;
         opacity: 0;
@@ -390,15 +691,17 @@
         margin-bottom: 40px;
         padding: 20px;
         border-radius: 12px;
-        background: #fff;
-        border: 1px solid rgba(0,0,0,0.05);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
     }
 
     .pub-card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-        background: rgba(99,102,241,0.03);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+        background: var(--card-hover);
+        border-color: var(--accent);
     }
 
     .pub-image { flex: 0 0 25%; position: relative; }
@@ -414,12 +717,10 @@
         opacity: 0; transition: opacity 0.3s ease;
     }
 
-    /* Fait disparaître l'image 1 (qui est directement dans .pub-image) */
     .pub-card:hover .pub-image > img {
         opacity: 0;
     }
 
-    /* Fait apparaître l'image de survol (le GIF) */
     .pub-card:hover .pub-hover-image {
         opacity: 1;
     }
@@ -428,89 +729,68 @@
     .pub-title {
         font-size: 1.2rem !important;
         font-weight: 600;
-        color: #1f2937 !important;
+        color: var(--text-primary) !important;
         text-decoration: none;
     }
-    .pub-title:hover { color: #4f46e5 !important; }
+    .pub-title:hover { color: var(--accent) !important; }
 
-    .pub-authors { font-size: 0.95rem; margin: 4px 0 8px; color: #111827; }
-    
-    /*.pub-tags { margin-bottom: 8px; }*/
-    /*.pub-tags .tag {*/
-    /*    display: inline-block; margin-right: 8px; padding: 2px 8px;*/
-    /*    border-radius: 8px; font-size: 0.8rem; background-color: #e0e7ff; color: #4f46e5;*/
-    /*}*/
-    /*.pub-tags .oral {*/
-    /*    display: inline-block; margin-right: 8px; padding: 2px 8px;*/
-    /*    border-radius: 8px; font-size: 0.8rem; background-color: #ffe0e0; color: #e54646;*/
-    /*}*/
+    .pub-authors { font-size: 0.95rem; margin: 4px 0 8px; color: var(--text-primary); }
 
     /* ===== MODERN PUB TAGS ===== */
     .pub-tags {
         margin-bottom: 12px;
         display: flex;
         flex-wrap: wrap;
-        gap: 8px; /* Remplace les margin-right et gère le retour à la ligne */
+        gap: 8px;
     }
 
     .pub-tags span {
         display: inline-flex;
         align-items: center;
-        gap: 6px; /* Espace entre l'icône et le texte */
+        gap: 6px;
         padding: 4px 12px;
-        border-radius: 20px; /* Style "Pill" moderne */
+        border-radius: 20px;
         font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         transition: all 0.3s ease;
         border: 1px solid transparent;
-        cursor: default; /* Indique que ce n'est pas un bouton cliquable */
+        cursor: default;
     }
 
-    /* Style Conférence (Bleu Inria/Indigo) */
     .pub-tags .conference {
-        background-color: rgba(79, 70, 229, 0.08);
-        color: #4f46e5;
-        border-color: rgba(79, 70, 229, 0.15);
+        background-color: var(--accent-light);
+        color: var(--accent);
+        border-color: rgba(79, 70, 229, 0.2);
     }
 
-    /* Style Journal (Vert émeraude) */
     .pub-tags .journal {
-        background-color: rgba(16, 185, 129, 0.08);
-        color: #059669;
-        border-color: rgba(16, 185, 129, 0.2);
+        background-color: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+        border-color: rgba(16, 185, 129, 0.25);
     }
 
-    /* Style Année (Gris neutre) */
     .pub-tags .year {
-        background-color: #f3f4f6;
-        color: #4b5563;
-        border-color: #e5e7eb;
+        background-color: var(--tag-year-bg);
+        color: var(--tag-year-text);
+        border-color: var(--tag-year-border);
     }
 
-    /* Style "Oral" (Gradient Rouge/Rosé pour sortir du lot) */
     .pub-tags .oral {
-        background: linear-gradient(135deg, #fff1f2, #ffe4e6);
-        color: #e11d48;
-        border-color: #fecdd3;
-        box-shadow: 0 2px 4px rgba(225, 29, 72, 0.05);
+        background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(225, 29, 72, 0.16));
+        color: #f43f5e;
+        border-color: rgba(244, 63, 94, 0.3);
     }
 
-    /* Effets dynamiques au survol */
     .pub-tags span:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .pub-tags .oral:hover {
-        box-shadow: 0 4px 10px rgba(225, 29, 72, 0.15);
-        border-color: #fda4af;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .pub-links a {
         margin-right: 12px; font-weight: 600; text-decoration: none;
-        color: #2563eb !important; position: relative;
+        color: var(--accent) !important; position: relative;
     }
     .pub-links a::after {
         content: ""; position: absolute; left: 0; bottom: -2px; width: 0%;
@@ -518,55 +798,121 @@
     }
     .pub-links a:hover::after { width: 100%; }
     
-    .abstract { margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: #4b5563 !important; }
+    .abstract { margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary) !important; }
 
     @media (max-width: 900px) {
         .pub-card { flex-direction: column; text-align: center; }
         .pub-image { flex: none; margin-bottom: 12px; }
     }
 
-    /* ===== NEWS SECTION ===== */
+    /* ===== MODERN CODING / TERMINAL NEWS SECTION (Black & Green) ===== */
     .news-section {
         max-width: 1000px;
         margin: 60px auto 80px auto;
         padding: 0 20px;
     }
 
+    .news-terminal {
+        background: #090d16;
+        border-radius: 14px;
+        border: 1px solid rgba(16, 185, 129, 0.28);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 25px rgba(16, 185, 129, 0.08);
+        overflow: hidden;
+        font-family: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, monospace;
+    }
+
+    .terminal-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 18px;
+        background: #0d131f;
+        border-bottom: 1px solid rgba(16, 185, 129, 0.18);
+    }
+
+    .terminal-dots {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .terminal-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .terminal-dot.red { background-color: #ef4444; }
+    .terminal-dot.yellow { background-color: #f59e0b; }
+    .terminal-dot.green { background-color: #10b981; }
+
+    .terminal-title {
+        color: #6ee7b7;
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
+        font-weight: 500;
+        opacity: 0.9;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .terminal-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #10b981;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+    }
+
+    .status-pulse {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #10b981;
+        box-shadow: 0 0 8px #10b981;
+        animation: statusBlink 1.8s infinite;
+    }
+
+    @keyframes statusBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.3; transform: scale(0.85); }
+    }
+
     .news-feed {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        background: #ffffff;
-        padding: 24px 28px;
-        border-radius: 16px;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        height: 120px; 
+        gap: 14px;
+        background: transparent;
+        padding: 20px 22px;
+        height: 180px; 
         overflow-y: auto; 
         overflow-x: hidden;
     }
 
     .news-item {
         display: flex;
-        gap: 24px;
+        gap: 18px;
         align-items: flex-start;
-        padding-bottom: 16px;
-        border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+        padding-bottom: 12px;
+        border-bottom: 1px dashed rgba(16, 185, 129, 0.2);
         flex-shrink: 0; 
     }
 
     .news-feed::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
     }
     .news-feed::-webkit-scrollbar-track {
-        background: transparent; 
-        margin: 10px 0;
+        background: rgba(0, 0, 0, 0.25); 
     }
     .news-feed::-webkit-scrollbar-thumb {
-        background: rgba(79, 70, 229, 0.3); 
-        border-radius: 10px;
+        background: rgba(16, 185, 129, 0.45); 
+        border-radius: 6px;
     }
     .news-feed::-webkit-scrollbar-thumb:hover {
-        background: rgba(79, 70, 229, 0.6); 
+        background: #10b981; 
     }
 
     .news-item:last-child {
@@ -575,51 +921,83 @@
     }
 
     .news-date {
-        font-weight: 700;
-        color: #4f46e5;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
+        font-weight: 600;
+        color: #10b981;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
         min-width: 90px;
         flex-shrink: 0;
-        padding-top: 3px;
+        padding-top: 2px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .news-date::before {
+        content: "❯";
+        color: #34d399;
+        font-size: 0.75rem;
     }
 
     .news-content {
-        color: #374151;
+        color: #e2e8f0;
         line-height: 1.6;
-        font-size: 0.95rem;
+        font-size: 0.88rem;
+    }
+
+    .news-content strong {
+        color: #6ee7b7;
+        font-weight: 600;
     }
 
     .news-content a {
         font-weight: 600;
         text-decoration: none;
+        color: #34d399;
+        border-bottom: 1px dashed #34d399;
+        transition: color 0.2s ease;
     }
 
     .news-content a:hover {
-        text-decoration: underline;
+        color: #a7f3d0;
+        border-bottom-style: solid;
     }
 
     .news-badge {
         display: inline-block;
-        padding: 2px 8px;
-        border-radius: 6px;
-        font-size: 0.75rem;
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-size: 0.72rem;
         font-weight: 600;
         margin-right: 6px;
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.04em;
     }
 
-    .badge-paper { background-color: #e0e7ff; color: #4338ca; }     
-    .badge-talk { background-color: #fef3c7; color: #d97706; }      
-    .badge-position { background-color: #d1fae5; color: #065f46; }  
-    .badge-event { background-color: #fce7f3; color: #9d174d; }     
+    .badge-paper { 
+        background-color: rgba(16, 185, 129, 0.15); 
+        color: #34d399; 
+        border: 1px solid rgba(16, 185, 129, 0.35); 
+    }     
+    .badge-talk { 
+        background-color: rgba(245, 158, 11, 0.15); 
+        color: #fbbf24; 
+        border: 1px solid rgba(245, 158, 11, 0.35); 
+    }      
+    .badge-position { 
+        background-color: rgba(56, 189, 248, 0.15); 
+        color: #38bdf8; 
+        border: 1px solid rgba(56, 189, 248, 0.35); 
+    }  
+    .badge-event { 
+        background-color: rgba(236, 72, 153, 0.15); 
+        color: #f472b6; 
+        border: 1px solid rgba(236, 72, 153, 0.35); 
+    }     
 
     @media (max-width: 600px) {
         .news-item {
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
         .news-date {
             min-width: auto;
@@ -629,11 +1007,10 @@
     /* ===== DISCREET TIMELINE (RESEARCH & CV) ===== */
     .research-timeline {
         position: relative;
-        padding-left: 32px; /* Espace pour la ligne à gauche */
+        padding-left: 32px;
         margin-top: 20px;
     }
 
-    /* La ligne fine et discrète */
     .research-timeline::before {
         content: '';
         position: absolute;
@@ -641,132 +1018,247 @@
         bottom: 0;
         left: 8px; 
         width: 1px;
-        background: linear-gradient(to bottom, rgba(79, 70, 229, 0.25) 0%, rgba(79, 70, 229, 0.03) 100%);
+        background: linear-gradient(to bottom, rgba(99, 102, 241, 0.35) 0%, rgba(99, 102, 241, 0.03) 100%);
     }
 
-    /* Le texte de l'année/date (Utilisé dans Research & CV) */
     .research-year {
         position: relative;
         font-size: 1.05rem;
         font-weight: 600;
-        color: #6b7280; 
+        color: var(--text-muted); 
         margin: 40px 0 20px 0;
         letter-spacing: 0.05em;
         transition: color 0.3s ease;
     }
 
-    /* Supprime la marge haute pour la toute première année */
     .research-year:first-child, .cv-item-wrap:first-child .research-year {
         margin-top: 0;
     }
 
-    /* Le petit point minimaliste sur la ligne */
     .research-year::before {
         content: '';
         position: absolute;
-        left: -27px; /* Alignement avec la ligne */
+        left: -27px;
         top: 50%;
         transform: translateY(-50%);
         width: 7px;
         height: 7px;
         background: #cbd5e1; 
         border-radius: 50%;
-        box-shadow: 0 0 0 6px #fafafa; 
+        box-shadow: 0 0 0 6px var(--timeline-dot-ring); 
         transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .research-year:hover::before {
-        background: #4f46e5;
+        background: var(--accent);
     }
 
-    /* ===== EPURÉ CV CONTENT ===== */
-    .cv-item-wrap {
-        margin-bottom: 40px;
+    /* ===== MODERN EXPERIENCE & EDUCATION TIMELINE ===== */
+    .cv-section {
+        max-width: 1000px;
+        margin: 70px auto 90px auto;
+        padding: 0 20px;
     }
-    
-    .cv-item-wrap:last-child {
+
+    .experience-timeline {
+        position: relative;
+        padding-left: 36px;
+        margin-top: 30px;
+    }
+
+    .experience-timeline::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        bottom: 20px;
+        left: 14px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--accent) 0%, rgba(99, 102, 241, 0.25) 75%, transparent 100%);
+    }
+
+    .exp-item {
+        position: relative;
+        margin-bottom: 34px;
+    }
+
+    .exp-item:last-child {
         margin-bottom: 0;
     }
 
-    /* Rapproche la date du titre dans le CV */
-    .cv-item-wrap .research-year {
+    .exp-node {
+        position: absolute;
+        left: -36px;
+        top: 22px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--card-bg);
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        box-shadow: 0 0 0 4px var(--timeline-dot-ring);
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+    .exp-item:hover .exp-node {
+        background: var(--accent);
+        color: #ffffff;
+        transform: scale(1.12);
+        box-shadow: 0 0 0 5px var(--timeline-dot-ring), 0 0 16px rgba(99, 102, 241, 0.4);
+    }
+
+    .exp-card {
+        padding: 24px 28px;
+        border-radius: 16px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exp-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(99, 102, 241, 0.35);
+        box-shadow: 0 12px 28px -6px rgba(79, 70, 229, 0.12);
+    }
+
+    .exp-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
         margin-bottom: 8px;
     }
 
-    /* Effet d'illumination du point au survol de tout le bloc Expérience */
-    .cv-item-wrap:hover .research-year::before {
-        background: #4f46e5;
+    .exp-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        letter-spacing: -0.01em;
     }
 
-    .cv-content {
-        padding-left: 0;
-    }
-
-    .cv-title {
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: #111827;
-        margin: 0 0 6px 0;
-        transition: color 0.3s ease;
-    }
-
-    .cv-item-wrap:hover .cv-title {
-        color: #4f46e5;
-    }
-
-    .cv-subtitle {
-        font-size: 1rem;
+    .exp-date-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
         font-weight: 600;
-        color: #6b7280;
-        margin-bottom: 12px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        background: var(--tag-year-bg);
+        color: var(--tag-year-text);
+        border: 1px solid var(--tag-year-border);
+        white-space: nowrap;
+        letter-spacing: 0.02em;
+    }
+
+    .exp-date-badge.current {
+        background: rgba(16, 185, 129, 0.12);
+        color: #10b981;
+        border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .exp-live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #10b981;
+        box-shadow: 0 0 8px #10b981;
+        display: inline-block;
+        animation: expBlink 1.8s infinite;
+    }
+
+    @keyframes expBlink {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    .exp-org {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 8px;
+        font-size: 0.94rem;
+        font-weight: 500;
+        color: var(--accent);
+        margin-bottom: 12px;
     }
 
-    .cv-subtitle i {
-        color: #8b5cf6;
+    .exp-location {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 400;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
     }
 
-    .cv-desc {
-        font-size: 0.95rem;
-        color: #4b5563;
-        line-height: 1.6;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        margin-top: 0;
+    .exp-desc {
+        font-size: 0.94rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        margin: 0 0 16px 0;
     }
 
-    /* Animation au survol du conteneur parent */
-    .cv-item-wrap:hover .cv-desc {
-        opacity: 1;
-        max-height: 200px; /* Taille suffisante pour ton texte */
-        margin-top: 12px;
+    .exp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
     }
 
-    /* Optionnel : ajoute un léger décalage au titre pour signifier qu'il est "cliquable" ou interactif */
-    .cv-item-wrap {
-        padding: 10px;
-        border-radius: 12px;
-        transition: background 0.3s ease;
+    .exp-tag {
+        font-size: 0.74rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        background: var(--tag-year-bg);
+        border: 1px solid var(--tag-year-border);
+        padding: 2px 8px;
+        border-radius: 4px;
     }
 
-    .cv-item-wrap:hover {
-        background: rgba(79, 70, 229, 0.02);
+    @media (max-width: 650px) {
+        .experience-timeline {
+            padding-left: 28px;
+        }
+        .experience-timeline::before {
+            left: 10px;
+        }
+        .exp-node {
+            left: -28px;
+            width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            top: 20px;
+        }
+        .exp-card {
+            padding: 18px 18px;
+        }
+        .exp-header {
+            flex-direction: column;
+            gap: 6px;
+        }
     }
 
-    /* ===== RESEARCH SEARCH BAR ===== */
+    /* ===== RESEARCH CONTROLS & SELECTION FILTER ===== */
     .research-controls {
         margin-top: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 25px;
         display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
     }
 
     .search-box {
         position: relative;
-        width: 100%;
+        flex: 1;
+        min-width: 260px;
         max-width: 450px;
     }
 
@@ -775,38 +1267,84 @@
         left: 18px;
         top: 50%;
         transform: translateY(-50%);
-        color: #9ca3af;
+        color: var(--text-muted);
         transition: color 0.3s ease;
     }
 
     .search-box input {
         width: 100%;
-        padding: 14px 20px 14px 44px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 13px 20px 13px 44px;
+        border: 1px solid var(--search-border);
         border-radius: 30px;
-        background: #ffffff;
-        font-size: 0.95rem;
-        color: #111827;
+        background: var(--search-bg);
+        font-size: 0.92rem;
+        color: var(--text-primary);
         outline: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         transition: all 0.3s ease;
         box-sizing: border-box;
     }
 
     .search-box input::placeholder {
-        color: #9ca3af;
+        color: var(--text-muted);
     }
 
     .search-box input:focus {
-        border-color: rgba(79, 70, 229, 0.4);
-        box-shadow: 0 6px 16px rgba(79, 70, 229, 0.08);
+        border-color: var(--accent);
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.15);
     }
 
     .search-box input:focus + i, 
     .search-box input:not(:placeholder-shown) + i {
-        color: #4f46e5;
+        color: var(--accent);
     }
-    
+
+    .selection-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border-radius: 30px;
+        border: 1px solid var(--search-border);
+        background: var(--search-bg);
+        color: var(--text-muted);
+        font-family: inherit;
+        font-size: 0.88rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+    }
+
+    .selection-btn:hover {
+        border-color: var(--accent);
+        color: var(--text-primary);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+    }
+
+    .selection-btn i {
+        color: #f59e0b;
+        font-size: 0.85rem;
+        transition: transform 0.25s ease;
+    }
+
+    .selection-btn:hover i {
+        transform: scale(1.15) rotate(10deg);
+    }
+
+    .selection-btn.active {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        color: #ffffff;
+        border-color: #4f46e5;
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    .selection-btn.active i {
+        color: #fbbf24;
+    }
+
     .pub-card.hidden, .research-year.hidden {
         display: none !important;
     }
@@ -816,16 +1354,33 @@
     function fadeIn(id) { document.getElementById(id).style.opacity = 1; }
     function fadeOut(id) { document.getElementById(id).style.opacity = 0; }
     
+    let isMySelectionActive = false;
+
+    function toggleMySelection() {
+        isMySelectionActive = !isMySelectionActive;
+        const btn = document.getElementById('my-selection-btn');
+        if (btn) {
+            btn.classList.toggle('active', isMySelectionActive);
+            btn.setAttribute('aria-pressed', isMySelectionActive ? 'true' : 'false');
+        }
+        filterPublications();
+    }
+    
     function filterPublications() {
-        const query = document.getElementById('pub-search').value.toLowerCase();
+        const searchInput = document.getElementById('pub-search');
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
         // Cible uniquement les années dans la section recherche pour ne pas affecter le CV
         const researchSection = document.getElementById('research');
+        if (!researchSection) return;
+
         const years = researchSection.querySelectorAll('.research-year');
         const cards = researchSection.querySelectorAll('.pub-card');
         
         cards.forEach(card => {
-            const textContent = card.innerText.toLowerCase();
-            if (textContent.includes(query)) {
+            const matchesQuery = query === '' || card.innerText.toLowerCase().includes(query);
+            const matchesFavorite = !isMySelectionActive || card.getAttribute('data-favorite') === 'true';
+
+            if (matchesQuery && matchesFavorite) {
                 card.classList.remove('hidden');
             } else {
                 card.classList.add('hidden');
@@ -861,23 +1416,229 @@
         if(searchInput) {
             searchInput.addEventListener('input', filterPublications);
         }
+
+        initWaveformCanvas();
+        updateToggleIcon(document.documentElement.getAttribute('data-theme') || 'light');
+    }
+
+    // ===== GESTION ROBUSTE DU THÈME SOMBRE / CLAIR =====
+    function toggleDarkMode() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', nextTheme);
+        try {
+            localStorage.setItem('theme', nextTheme);
+        } catch(e) {}
+        updateToggleIcon(nextTheme);
+    }
+
+    function updateToggleIcon(theme) {
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.className = 'fa-solid fa-sun';
+                    toggleBtn.setAttribute('title', 'Passer en mode clair');
+                    toggleBtn.setAttribute('aria-label', 'Passer en mode clair');
+                } else {
+                    icon.className = 'fa-solid fa-moon';
+                    toggleBtn.setAttribute('title', 'Passer en mode sombre');
+                    toggleBtn.setAttribute('aria-label', 'Passer en mode sombre');
+                }
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updateToggleIcon(document.documentElement.getAttribute('data-theme') || 'light');
+    });
+
+    // ===== DISTORSION AUDIO WAVEFORM & OSCILLOSCOPE (100% VISUEL, AUCUN BRUIT) =====
+    let waveformCanvas = null;
+    let waveCtx = null;
+    let isWaveHovered = false;
+    let waveAnimId = null;
+    let currentDistortScale = 0;
+    let targetDistortScale = 0;
+    let wavePhase = 0;
+
+    function initWaveformCanvas() {
+        waveformCanvas = document.getElementById('waveformCanvas');
+        if (waveformCanvas) {
+            waveCtx = waveformCanvas.getContext('2d');
+        }
+    }
+
+    function startWaveformEffect() {
+        isWaveHovered = true;
+        targetDistortScale = 42; // Amplitude de distorsion bien visible
+        if (!waveAnimId) {
+            waveAnimId = requestAnimationFrame(renderWaveformFrame);
+        }
+    }
+
+    function stopWaveformEffect() {
+        isWaveHovered = false;
+        targetDistortScale = 0;
+    }
+
+    function renderWaveformFrame() {
+        // Interpolation fluide vers la cible (montée et descente progressives)
+        currentDistortScale += (targetDistortScale - currentDistortScale) * 0.16;
+        wavePhase += 0.15;
+
+        // 1. Déformation de l'image via le filtre SVG (effet d'onde acoustique transversale)
+        const disp = document.getElementById('audio-wave-disp');
+        const turb = document.getElementById('audio-wave-turb');
+        if (disp && turb) {
+            disp.setAttribute('scale', currentDistortScale.toFixed(2));
+
+            // Fréquences d'oscillations audio dynamiques simulant des formants vocaux
+            const freqY = (0.065 + Math.sin(wavePhase * 1.6) * 0.035 + Math.cos(wavePhase * 3.2) * 0.02).toFixed(4);
+            const freqX = (0.007 + Math.cos(wavePhase * 1.1) * 0.004).toFixed(4);
+            turb.setAttribute('baseFrequency', `${freqX} ${freqY}`);
+
+            if (Math.random() < 0.28) {
+                turb.setAttribute('seed', Math.floor(Math.random() * 80).toString());
+            }
+        }
+
+        // 2. Tracé de l'onde sonore (waveform) sur le canvas superposé
+        if (waveCtx && waveformCanvas) {
+            const width = waveformCanvas.width;
+            const height = waveformCanvas.height;
+            waveCtx.clearRect(0, 0, width, height);
+
+            if (currentDistortScale > 0.4) {
+                const centerY = height / 2;
+                const normAmp = (currentDistortScale / 42);
+
+                // Onde 1 : Cyan haute fréquence
+                drawWaveLine(waveCtx, width, centerY, normAmp * 26, wavePhase, 'rgba(56, 189, 248, 0.85)', 2.5, 1.0);
+                // Onde 2 : Violet / Indigo fondamentale
+                drawWaveLine(waveCtx, width, centerY, normAmp * 20, wavePhase + 1.2, 'rgba(129, 140, 248, 0.9)', 2.0, 1.5);
+                // Onde 3 : Harmonique blanche éclatante
+                drawWaveLine(waveCtx, width, centerY, normAmp * 12, wavePhase + 2.4, 'rgba(255, 255, 255, 0.95)', 1.5, 2.3);
+            }
+        }
+
+        // Arrêt de la boucle quand l'effet est totalement dissipé hors survol
+        if (!isWaveHovered && currentDistortScale < 0.25) {
+            currentDistortScale = 0;
+            if (disp) disp.setAttribute('scale', '0');
+            if (waveCtx && waveformCanvas) {
+                waveCtx.clearRect(0, 0, waveformCanvas.width, waveformCanvas.height);
+            }
+            waveAnimId = null;
+            return;
+        }
+
+        waveAnimId = requestAnimationFrame(renderWaveformFrame);
+    }
+
+    function drawWaveLine(ctx, width, centerY, amplitude, phase, color, lineWidth, freqMult) {
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = lineWidth;
+        ctx.lineCap = 'round';
+
+        for (let x = 0; x < width; x += 2) {
+            // Fenêtre de Hanning pour confiner l'onde à l'intérieur du disque
+            const normX = x / width;
+            const windowFactor = Math.sin(normX * Math.PI);
+
+            const y = centerY + (Math.sin(normX * 13 * freqMult + phase) * amplitude * windowFactor)
+                              + (Math.sin(normX * 26 * freqMult - phase * 1.6) * (amplitude * 0.45) * windowFactor);
+            if (x === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        }
+        ctx.stroke();
     }
     </script>
 
 </head>
 
-<body style="font-size: 20px; background-color: #fafafa;">
+<body>
 
-<nav class="top-nav">
-    <ul class="nav-links">
-        <li><a href="#about"><i class="fa-solid fa-user" style="margin-right: 6px;"></i> About</a></li>
-        <li><a href="#news"><i class="fa-solid fa-bullhorn" style="margin-right: 6px;"></i> News</a></li>
-        <li><a href="#thesis"><i class="fa-solid fa-book" style="margin-right: 6px;"></i> Thesis</a></li>
-        <li><a href="#research"><i class="fa-solid fa-microscope" style="margin-right: 6px;"></i> Research</a></li>
-        <li><a href="#experience"><i class="fa-solid fa-graduation-cap" style="margin-right: 6px;"></i> Education</a></li>
-        <li><a href="#art"><i class="fa-solid fa-palette" style="margin-right: 6px;"></i> Artworks</a></li>
-    </ul>
-</nav>
+<header class="site-header">
+    <nav class="top-nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#thesis">Thesis</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#art">Artworks</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleDarkMode()" aria-label="Passer en mode sombre" title="Passer en mode sombre">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="news-ticker-bar">
+        <div class="ticker-container">
+            <a href="#news" class="ticker-label" title="View all news">
+                <span class="ticker-pulse"></span>
+                <span>News</span>
+            </a>
+            <div class="ticker-viewport">
+                <div class="ticker-track">
+                    <div class="ticker-items">
+                        <span class="ticker-item">
+                            <span class="ticker-date">Sep 2026</span>
+                            <a href="https://arxiv.org/abs/2609.37798" target="_blank" rel="noopener"><strong>GLaS-JEPA</strong> on arXiv — simple regularized speech SSL</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">Jun 2026</span>
+                            <a href="#news"><strong>3 papers accepted</strong> at INTERSPEECH 2026 (InsideSSL, 3D facial animation, HybridCodec)</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">May 2026</span>
+                            <a href="https://arxiv.org/abs/2602.15491v1" target="_blank" rel="noopener"><strong>"Equalizer"</strong> preprint uploaded to arXiv</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">Mar 2026</span>
+                            <a href="#news">Seminar presentation at <strong>INRIA</strong> on audio-visual representations</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                    </div>
+                    <!-- Duplicate for infinite seamless scroll -->
+                    <div class="ticker-items" aria-hidden="true">
+                        <span class="ticker-item">
+                            <span class="ticker-date">Sep 2026</span>
+                            <a href="https://arxiv.org/abs/2609.37798" target="_blank" rel="noopener"><strong>GLaS-JEPA</strong> on arXiv — simple regularized speech SSL</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">Jun 2026</span>
+                            <a href="#news"><strong>3 papers accepted</strong> at INTERSPEECH 2026 (InsideSSL, 3D facial animation, HybridCodec)</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">May 2026</span>
+                            <a href="https://arxiv.org/abs/2602.15491v1" target="_blank" rel="noopener"><strong>"Equalizer"</strong> preprint uploaded to arXiv</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                        <span class="ticker-item">
+                            <span class="ticker-date">Mar 2026</span>
+                            <a href="#news">Seminar presentation at <strong>INRIA</strong> on audio-visual representations</a>
+                        </span>
+                        <span class="ticker-sep">✦</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
@@ -895,7 +1656,7 @@
                     <a href="https://xavirema.eu/">Xavier Alameda-Pineda</a>.
                     I completed my PhD at 
                     <a href="https://www.centralesupelec.fr/campus/rennes">CentraleSupélec</a>, 
-                    advised by 
+                    advised by Renaud Séguier and 
                     <a href="https://sleglaive.github.io/">Simon Leglaive</a>.
                     <br><br>
                     My research focuses on generative modeling, multimodal learning, speech processing, 
@@ -919,8 +1680,23 @@
                     </div>
                 </div>
 
-                <div class="hero-image">
-                    <img src="images/sadok-samir.jpg" alt="Samir Sadok">
+                <!-- Filtre SVG de distorsion Waveform Audio -->
+                <svg style="position: absolute; width: 0; height: 0; pointer-events: none; overflow: hidden;" aria-hidden="true">
+                    <defs>
+                        <filter id="audio-waveform-distort" x="-20%" y="-20%" width="140%" height="140%">
+                            <feTurbulence id="audio-wave-turb" type="turbulence" baseFrequency="0.006 0.07" numOctaves="2" seed="5" result="waveNoise" />
+                            <feDisplacementMap id="audio-wave-disp" in="SourceGraphic" in2="waveNoise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                </svg>
+
+                <div class="hero-image-container">
+                    <div class="hero-image" id="heroPhoto" onmouseenter="startWaveformEffect()" onmouseleave="stopWaveformEffect()" title="Survolez pour la distorsion audio">
+                        <img src="images/sadok-samir.jpg" alt="Samir Sadok">
+                        
+                        <!-- Tracé dynamique de waveform audio -->
+                        <canvas id="waveformCanvas" class="waveform-canvas" width="260" height="260"></canvas>
+                    </div>
                 </div>
             </section>
 
@@ -928,62 +1704,65 @@
             <section id="news" class="news-section">
                 <h2 class="section-title">News</h2>
                 
-                <div class="news-feed">
-
-                    <div class="news-item">
-                        <div class="news-date">Jun 2026</div>
-                        <div class="news-content">
-                            <span class="news-badge badge-paper">Paper</span>
-                            🎉 Three papers have been accepted at <strong>INTERSPEECH 2026</strong>! Our contributions span self-supervised speech representation analysis with <strong>"InsideSSL"</strong>, discrete speech representations for <strong>3D facial animation</strong>, and <strong>"HybridCodec"</strong>, a hybrid discrete-continuous framework for efficient Speech Language Models.
+                <div class="news-terminal">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <div class="terminal-title">
+                            <i class="fa-solid fa-terminal"></i> samir@research:~/news.log
+                        </div>
+                        <div class="terminal-status">
+                            <span class="status-pulse"></span> LIVE
                         </div>
                     </div>
-                    
-                    <div class="news-item">
-                        <div class="news-date">May 2026</div>
-                        <div class="news-content">
-                            <span class="news-badge badge-paper">Paper</span> 
-                            Our paper <strong>"Equalizer"</strong> has been uploaded to <a href="https://arxiv.org/abs/2602.15491v1">arXiv</a>! Check it out.
-                        </div>
-                    </div>
+                    <div class="news-feed">
 
-                    <div class="news-item">
-                        <div class="news-date">Mar 2026</div>
-                        <div class="news-content">
-                            <span class="news-badge badge-talk">Talk</span> 
-                            I will be giving a presentation on audio-visual speech representation learning at INRIA's seminar.
+                        <div class="news-item">
+                            <div class="news-date">Sep 2026</div>
+                            <div class="news-content">
+                                <span class="news-badge badge-paper">Paper</span>
+                                Our new paper <strong>"GLaS-JEPA"</strong> is now on <a href="https://arxiv.org/abs/2609.37798" target="_blank" rel="noopener">arXiv</a>! We introduce a simple, regularized speech SSL model that predicts continuous representations without complex engineered prediction targets or EMA encoders.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="news-item">
-                        <div class="news-date">Oct 2025</div>
-                        <div class="news-content">
-                            <span class="news-badge badge-event">Event</span> 
-                            Attending <strong>Interspeech 2025</strong> to present our work on interpretability in neural audio codecs. Come say hi!
+                        <div class="news-item">
+                            <div class="news-date">Jun 2026</div>
+                            <div class="news-content">
+                                <span class="news-badge badge-paper">Paper</span>
+                                🎉 Three papers have been accepted at <strong>INTERSPEECH 2026</strong>! Our contributions span self-supervised speech representation analysis with <strong>"InsideSSL"</strong>, discrete speech representations for <strong>3D facial animation</strong>, and <strong>"HybridCodec"</strong>, a hybrid discrete-continuous framework for efficient Speech Language Models.
+                            </div>
                         </div>
-                    </div>
+                        
+                        <div class="news-item">
+                            <div class="news-date">May 2026</div>
+                            <div class="news-content">
+                                <span class="news-badge badge-paper">Paper</span> 
+                                Our paper <strong>"Equalizer"</strong> has been uploaded to <a href="https://arxiv.org/abs/2602.15491v1">arXiv</a>! Check it out.
+                            </div>
+                        </div>
 
+                        <div class="news-item">
+                            <div class="news-date">Mar 2026</div>
+                            <div class="news-content">
+                                <span class="news-badge badge-talk">Talk</span> 
+                                I will be giving a presentation on audio-visual speech representation learning at INRIA's seminar.
+                            </div>
+                        </div>
+
+                        <div class="news-item">
+                            <div class="news-date">Oct 2025</div>
+                            <div class="news-content">
+                                <span class="news-badge badge-event">Event</span> 
+                                Attending <strong>Interspeech 2025</strong> to present our work on interpretability in neural audio codecs. Come say hi!
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
-
-            <section id="thesis" class="thesis-section">
-                <div class="thesis-card">
-                    <h2 class="section-title">Thesis</h2>
-                    <a href="https://theses.hal.science/tel-04617104v1" class="thesis-link">
-                    <h3 class="thesis-title">
-                        Audiovisual Speech Representation Learning Applied to Emotion Recognition
-                        <span class="thesis-meta">(2024, CentraleSupélec)</span>
-                    </h3>
-                    </a>
-                    <p class="thesis-description">
-                    This thesis develops unsupervised and self-supervised generative models for multimodal 
-                    and sequential audiovisual speech, learning disentangled latent representations that 
-                    enhance interpretability and enable effective emotion recognition, signal analysis, 
-                    transformation, and generation.
-                    </p>
-                </div>
-            </section>
-
-            
 
             <section id="research" class="research-section">
 
@@ -995,12 +1774,15 @@
                     </p>
                 </div>
 
-                <!-- Barre de recherche -->
+                <!-- Barre de recherche et filtre de sélection -->
                 <div class="research-controls">
                     <div class="search-box">
                         <input type="text" id="pub-search" placeholder="Search by keyword, author, or conference...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <button type="button" id="my-selection-btn" class="selection-btn" onclick="toggleMySelection()" title="Filter Samir's selected papers" aria-pressed="false">
+                        <i class="fa-solid fa-star"></i> My Selection
+                    </button>
                 </div>
 
                 <div class="research-timeline">
@@ -1037,7 +1819,7 @@
                     </div>
 
 
-                    <div class="pub-card" onmouseover="fadeIn('insideSSL')" onmouseout="fadeOut('insideSSL')">
+                    <div class="pub-card" data-favorite="true" onmouseover="fadeIn('insideSSL')" onmouseout="fadeOut('insideSSL')">
                         <div class="pub-image">
                         <div id="insideSSL" class="pub-hover-image">
                             <img src="images/insideSSL/2.gif" alt="">
@@ -1225,7 +2007,7 @@
                         </div>
                     </div>
 
-                    <div class="pub-card" onmouseover="fadeIn('ancogen')" onmouseout="fadeOut('ancogen')">
+                    <div class="pub-card" data-favorite="true" onmouseover="fadeIn('ancogen')" onmouseout="fadeOut('ancogen')">
                         <div class="pub-image">
                             <div id="ancogen" class="pub-hover-image">
                                 <img src="images/ancogen/2.svg" alt="AnCoGen hover">
@@ -1257,7 +2039,7 @@
                     </div>
 
 
-                    <div class="pub-card" onmouseover="fadeIn('avmae')" onmouseout="fadeOut('avmae')">
+                    <div class="pub-card" data-favorite="true" onmouseover="fadeIn('avmae')" onmouseout="fadeOut('avmae')">
                         <div class="pub-image">
                             <div id="avmae" class="pub-hover-image">
                                 <img src="images/VQ-MAE-AV/2.svg" alt="VQ-MAE-AV hover">
@@ -1319,7 +2101,7 @@
 
                     <div class="research-year">2024</div>
 
-                    <div class="pub-card" onmouseover="fadeIn('mdvae')" onmouseout="fadeOut('mdvae')">
+                    <div class="pub-card" data-favorite="true" onmouseover="fadeIn('mdvae')" onmouseout="fadeOut('mdvae')">
                         <div class="pub-image">
                             <div id="mdvae" class="pub-hover-image">
                                 <img src="images/mdvae/gif-4.gif" alt="MDVAE hover">
@@ -1413,9 +2195,33 @@
                             </p>
                         </div>
                     </div>
-                
                 </div>
             </section>     
+
+            <section id="thesis" class="thesis-section">
+                <h2 class="section-title">Thesis</h2>
+                <div class="thesis-entry">
+                    <a href="https://theses.hal.science/tel-04617104v1" target="_blank" rel="noopener" class="thesis-title">
+                        Audiovisual Speech Representation Learning Applied to Emotion Recognition
+                    </a>
+                    <p class="thesis-authors">
+                        <strong>Samir Sadok</strong>. Supervised by <strong>Renaud Séguier</strong> (directeur de thèse) and <a href="https://sleglaive.github.io/" target="_blank" rel="noopener">Simon Leglaive</a>.
+                    </p>
+                    <div class="thesis-meta-text">
+                        CentraleSupélec, Université de Rennes · 2024
+                    </div>
+                    <div class="thesis-links">
+                        <a href="https://theses.hal.science/tel-04617104v1" target="_blank" rel="noopener">TEL / HAL</a> /
+                        <a href="https://theses.hal.science/tel-04617104v1/document" target="_blank" rel="noopener">PDF</a>
+                    </div>
+                    <p class="thesis-description">
+                        This thesis develops unsupervised and self-supervised generative models for multimodal 
+                        and sequential audiovisual speech, learning disentangled latent representations that 
+                        enhance interpretability and enable effective emotion recognition, signal analysis, 
+                        transformation, and generation.
+                    </p>
+                </div>
+            </section>
         </td>
 
     </tr>
@@ -1424,54 +2230,104 @@
 
 
 <section id="experience" class="cv-section">
-                <h2 class="section-title">Experience & Education</h2>
-                
-                <div class="research-timeline">
-                    
-                    <!-- Expérience 1 -->
-                    <div class="cv-item-wrap">
-                        <div class="research-year">05/2024 - Present</div>
-                        <div class="cv-content">
-                            <h3 class="cv-title">Postdoctoral Researcher</h3>
-                            <div class="cv-subtitle">
-                                <i class="fa-solid fa-building"></i> INRIA, Université Grenoble Alpes, CNRS, LJK
-                            </div>
-                            <div class="cv-desc">
-                                Deep Information Geometry. Studying theoretical and practical links between (Dynamical) VAEs, diffusion models, and normalizing flows. Developing a statistical manifold framework to analyze their training dynamics and improve adaptation efficiency.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Éducation 1 -->
-                    <div class="cv-item-wrap">
-                        <div class="research-year">11/2020 - 03/2024</div>
-                        <div class="cv-content">
-                            <h3 class="cv-title">Ph.D. in Artificial intelligence (AI)</h3>
-                            <div class="cv-subtitle">
-                                <i class="fa-solid fa-graduation-cap"></i> Centrale Supélec, IETR
-                            </div>
-                            <div class="cv-desc">
-                                Thesis: Audiovisual Speech Representation Learning for Emotion Recognition. Addressed label scarcity and emotional ambiguity through unsupervised and self-supervised deep generative models. Focused on representation learning, disentanglement, and model interpretability.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Expérience 2 -->
-                    <div class="cv-item-wrap">
-                        <div class="research-year">03/2020 - 08/2020</div>
-                        <div class="cv-content">
-                            <h3 class="cv-title">Junior Researcher</h3>
-                            <div class="cv-subtitle">
-                                <i class="fa-solid fa-briefcase"></i> Orange Labs
-                            </div>
-                            <div class="cv-desc">
-                                Deep learning for emotion recognition in speech signals.
-                            </div>
-                        </div>
-                    </div>
-
+    <h2 class="section-title">Experience & Education</h2>
+    
+    <div class="experience-timeline">
+        
+        <!-- Postdoc INRIA -->
+        <div class="exp-item">
+            <div class="exp-node">
+                <i class="fa-solid fa-flask"></i>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h3 class="exp-title">Postdoctoral Researcher</h3>
+                    <span class="exp-date-badge current">
+                        <span class="exp-live-dot"></span> 05/2024 – Present
+                    </span>
                 </div>
-            </section>
+                <div class="exp-org">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <span>INRIA, Université Grenoble Alpes, CNRS, LJK</span>
+                    <span class="dot-sep">•</span>
+                    <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Grenoble, France</span>
+                </div>
+                <p class="exp-desc">
+                    <strong>Deep Information Geometry</strong>. Studying theoretical and practical links between (Dynamical) VAEs, diffusion models, and normalizing flows. Developing a statistical manifold framework to analyze their training dynamics and improve adaptation efficiency. Advised by Xavier Alameda-Pineda.
+                </p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Information Geometry</span>
+                    <span class="exp-tag">Diffusion Models</span>
+                    <span class="exp-tag">Dynamical VAEs</span>
+                    <span class="exp-tag">Normalizing Flows</span>
+                    <span class="exp-tag">Statistical Manifolds</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PhD CentraleSupelec -->
+        <div class="exp-item">
+            <div class="exp-node">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h3 class="exp-title">Ph.D. in Artificial Intelligence</h3>
+                    <span class="exp-date-badge">
+                        11/2020 – 03/2024
+                    </span>
+                </div>
+                <div class="exp-org">
+                    <i class="fa-solid fa-university"></i>
+                    <span>CentraleSupélec, IETR</span>
+                    <span class="dot-sep">•</span>
+                    <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Rennes, France</span>
+                </div>
+                <p class="exp-desc">
+                    <strong>Thesis: Audiovisual Speech Representation Learning for Emotion Recognition</strong>. Addressed label scarcity and emotional ambiguity through unsupervised and self-supervised deep generative models. Focused on representation learning, latent disentanglement, and model interpretability. Advised by Renaud Séguier (directeur de thèse) and Simon Leglaive.
+                </p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Deep Generative Models</span>
+                    <span class="exp-tag">Speech Emotion Recognition</span>
+                    <span class="exp-tag">Self-Supervised Learning</span>
+                    <span class="exp-tag">Disentanglement</span>
+                    <span class="exp-tag">Multimodal AI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orange Labs -->
+        <div class="exp-item">
+            <div class="exp-node">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="exp-card">
+                <div class="exp-header">
+                    <h3 class="exp-title">Junior Researcher</h3>
+                    <span class="exp-date-badge">
+                        03/2020 – 08/2020
+                    </span>
+                </div>
+                <div class="exp-org">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Orange Labs</span>
+                    <span class="dot-sep">•</span>
+                    <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Rennes, France</span>
+                </div>
+                <p class="exp-desc">
+                    Research on deep learning techniques for emotion recognition in speech signals. Exploration of acoustic feature representations and recurrent neural architectures for paralinguistic analysis.
+                </p>
+                <div class="exp-tags">
+                    <span class="exp-tag">Speech Processing</span>
+                    <span class="exp-tag">Emotion Recognition</span>
+                    <span class="exp-tag">Acoustic Analysis</span>
+                    <span class="exp-tag">Deep Learning</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 
 
