@@ -107,6 +107,8 @@
         color: var(--text-primary);
         min-height: 100vh;
         transition: background-color 0.3s ease, color 0.3s ease;
+        overflow-x: hidden;
+        width: 100%;
     }
 
     a {
@@ -336,19 +338,6 @@
         box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
     }
 
-    @media (max-width: 800px) {
-        .nav-container {
-            justify-content: space-between;
-        }
-        .theme-toggle-btn {
-            position: static;
-            transform: none;
-        }
-        .theme-toggle-btn:hover {
-            transform: scale(1.08);
-        }
-    }
-
     /* ===== HERO SECTION ===== */
     .hero-links {
         display: flex;
@@ -514,28 +503,6 @@
         0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
         50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
         100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-    }
-
-    /* Adaptation Responsive pour le mobile */
-    @media (max-width: 900px) {
-        .hero {
-            flex-direction: column-reverse;
-            text-align: center;
-            gap: 40px;
-        }
-        .hero-image, .hero-image img, .waveform-canvas {
-            width: 210px;
-            height: 210px;
-        }
-        .waveform-canvas {
-            margin-top: -105px;
-            margin-left: -105px;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
     }
 
     /* ===== SECTIONS ===== */
@@ -800,11 +767,6 @@
     
     .abstract { margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary) !important; }
 
-    @media (max-width: 900px) {
-        .pub-card { flex-direction: column; text-align: center; }
-        .pub-image { flex: none; margin-bottom: 12px; }
-    }
-
     /* ===== MODERN CODING / TERMINAL NEWS SECTION (Black & Green) ===== */
     .news-section {
         max-width: 1000px;
@@ -993,16 +955,6 @@
         color: #f472b6; 
         border: 1px solid rgba(236, 72, 153, 0.35); 
     }     
-
-    @media (max-width: 600px) {
-        .news-item {
-            flex-direction: column;
-            gap: 4px;
-        }
-        .news-date {
-            min-width: auto;
-        }
-    }
 
     /* ===== DISCREET TIMELINE (RESEARCH & CV) ===== */
     .research-timeline {
@@ -1222,29 +1174,6 @@
         border-radius: 4px;
     }
 
-    @media (max-width: 650px) {
-        .experience-timeline {
-            padding-left: 28px;
-        }
-        .experience-timeline::before {
-            left: 10px;
-        }
-        .exp-node {
-            left: -28px;
-            width: 24px;
-            height: 24px;
-            font-size: 0.7rem;
-            top: 20px;
-        }
-        .exp-card {
-            padding: 18px 18px;
-        }
-        .exp-header {
-            flex-direction: column;
-            gap: 6px;
-        }
-    }
-
     /* ===== RESEARCH CONTROLS & SELECTION FILTER ===== */
     .research-controls {
         margin-top: 20px;
@@ -1347,6 +1276,405 @@
 
     .pub-card.hidden, .research-year.hidden {
         display: none !important;
+    }
+
+    /* ========================================================
+       COMPREHENSIVE MOBILE & RESPONSIVE DESIGN (PHONES & TABLETS)
+       ======================================================== */
+
+    /* --- 1. TABLE & GLOBAL CONTAINER SAFETY --- */
+    @media (max-width: 900px) {
+        table, tbody, tr, td {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .hero {
+            flex-direction: column-reverse;
+            text-align: center;
+            gap: 32px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+
+        .hero-name {
+            font-size: 2.1rem !important;
+            margin-bottom: 14px;
+        }
+
+        .hero-description {
+            font-size: 0.96rem;
+            line-height: 1.65;
+            text-align: left;
+            margin-bottom: 22px;
+        }
+
+        .hero-links {
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .hero-image, .hero-image img, .waveform-canvas {
+            width: 210px !important;
+            height: 210px !important;
+        }
+
+        .waveform-canvas {
+            margin-top: -105px !important;
+            margin-left: -105px !important;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pub-card {
+            flex-direction: column;
+            text-align: left;
+            padding: 18px;
+            gap: 16px;
+        }
+
+        .pub-image {
+            flex: none;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+    }
+
+    /* --- 2. MOBILE NAVIGATION & TICKER (SMARTPHONES < 768px) --- */
+    @media (max-width: 768px) {
+        html {
+            scroll-padding-top: 86px;
+        }
+
+        .top-nav {
+            padding: 8px 12px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 4px;
+            padding: 2px 0;
+            max-width: calc(100% - 44px);
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-links li {
+            flex-shrink: 0;
+        }
+
+        .nav-links a {
+            padding: 5px 10px;
+            font-size: 0.82rem !important;
+            white-space: nowrap;
+        }
+
+        .theme-toggle-btn {
+            position: static;
+            transform: none;
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            font-size: 0.84rem;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.06);
+        }
+
+        .news-ticker-bar {
+            height: 30px;
+            font-size: 0.78rem;
+        }
+
+        .ticker-container {
+            padding: 0 12px;
+            gap: 8px;
+        }
+
+        .ticker-label {
+            font-size: 0.65rem;
+            padding: 1px 6px;
+        }
+
+        .ticker-item {
+            font-size: 0.78rem;
+        }
+
+        .ticker-date {
+            font-size: 0.7rem;
+        }
+
+        .ticker-sep {
+            margin: 0 12px;
+        }
+
+        .research-section, .thesis-section, .cv-section, .art-section {
+            margin: 45px auto;
+            padding: 0 16px;
+        }
+
+        .section-title, .section-header h2 {
+            font-size: 1.35rem !important;
+            margin-bottom: 18px;
+        }
+
+        .section-header p {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            margin-bottom: 20px;
+        }
+
+        .research-controls {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            min-width: 100%;
+            max-width: 100%;
+        }
+
+        .search-box input {
+            padding: 11px 16px 11px 40px;
+            font-size: 0.88rem;
+        }
+
+        .selection-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+        }
+
+        .research-timeline {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .research-timeline::before {
+            left: 4px;
+        }
+
+        .research-year {
+            font-size: 0.95rem;
+            margin: 28px 0 14px 0;
+        }
+
+        .research-year::before {
+            left: -19px;
+            width: 6px;
+            height: 6px;
+        }
+
+        .pub-title {
+            font-size: 1.05rem !important;
+            line-height: 1.4;
+        }
+
+        .pub-authors {
+            font-size: 0.88rem;
+            margin: 4px 0 8px;
+        }
+
+        .pub-tags {
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .pub-tags span {
+            padding: 3px 8px;
+            font-size: 0.7rem;
+        }
+
+        .pub-links a {
+            font-size: 0.88rem !important;
+            margin-right: 10px;
+        }
+
+        .abstract {
+            font-size: 0.88rem;
+            line-height: 1.55;
+            margin-top: 8px;
+        }
+    }
+
+    /* --- 3. SMALL PHONES & TOUCH REFINEMENTS (< 600px) --- */
+    @media (max-width: 600px) {
+        .hero-name {
+            font-size: 1.85rem !important;
+        }
+
+        .hero-link-btn {
+            padding: 8px 14px;
+            font-size: 0.84rem !important;
+            gap: 6px;
+        }
+
+        .hero-image, .hero-image img, .waveform-canvas {
+            width: 190px !important;
+            height: 190px !important;
+        }
+
+        .waveform-canvas {
+            margin-top: -95px !important;
+            margin-left: -95px !important;
+        }
+
+        .news-section {
+            margin: 35px auto 45px auto;
+            padding: 0 14px;
+        }
+
+        .terminal-bar {
+            padding: 8px 12px;
+        }
+
+        .terminal-title {
+            font-size: 0.7rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 170px;
+        }
+
+        .news-feed {
+            padding: 14px 12px;
+            height: 180px;
+            gap: 12px;
+        }
+
+        .news-item {
+            flex-direction: column;
+            gap: 4px;
+            padding-bottom: 10px;
+        }
+
+        .news-date {
+            min-width: auto;
+            font-size: 0.76rem;
+        }
+
+        .news-content {
+            font-size: 0.84rem;
+            line-height: 1.55;
+        }
+
+        .thesis-title {
+            font-size: 1.05rem !important;
+            line-height: 1.4;
+        }
+
+        .thesis-authors {
+            font-size: 0.88rem;
+        }
+
+        .thesis-meta-text {
+            font-size: 0.82rem;
+        }
+
+        .thesis-description {
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .experience-timeline {
+            padding-left: 22px;
+            margin-top: 20px;
+        }
+
+        .experience-timeline::before {
+            left: 7px;
+        }
+
+        .exp-node {
+            left: -22px;
+            width: 20px;
+            height: 20px;
+            font-size: 0.62rem;
+            top: 18px;
+            box-shadow: 0 0 0 3px var(--timeline-dot-ring);
+        }
+
+        .exp-card {
+            padding: 14px 14px;
+            border-radius: 12px;
+        }
+
+        .exp-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .exp-title {
+            font-size: 1.02rem;
+        }
+
+        .exp-date-badge {
+            font-size: 0.72rem;
+            padding: 2px 8px;
+        }
+
+        .exp-org {
+            font-size: 0.84rem;
+            margin-bottom: 8px;
+        }
+
+        .exp-desc {
+            font-size: 0.86rem;
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+
+        .exp-tags {
+            gap: 4px;
+        }
+
+        .exp-tag {
+            font-size: 0.68rem;
+            padding: 2px 6px;
+        }
+
+        .art-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .art-item {
+            max-width: 280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .art-overlay {
+            opacity: 1 !important;
+            background: linear-gradient(to top, rgba(17, 24, 39, 0.75), transparent);
+            padding: 20px 14px 14px 14px;
+        }
     }
     </style>
 
@@ -1482,6 +1810,13 @@
     function stopWaveformEffect() {
         isWaveHovered = false;
         targetDistortScale = 0;
+    }
+
+    let touchDistortTimer = null;
+    function handlePhotoTouch() {
+        startWaveformEffect();
+        if (touchDistortTimer) clearTimeout(touchDistortTimer);
+        touchDistortTimer = setTimeout(stopWaveformEffect, 2600);
     }
 
     function renderWaveformFrame() {
@@ -1691,7 +2026,7 @@
                 </svg>
 
                 <div class="hero-image-container">
-                    <div class="hero-image" id="heroPhoto" onmouseenter="startWaveformEffect()" onmouseleave="stopWaveformEffect()" title="Survolez pour la distorsion audio">
+                    <div class="hero-image" id="heroPhoto" onmouseenter="startWaveformEffect()" onmouseleave="stopWaveformEffect()" onclick="handlePhotoTouch()" title="Survolez ou touchez pour la distorsion audio">
                         <img src="images/sadok-samir.jpg" alt="Samir Sadok">
                         
                         <!-- Tracé dynamique de waveform audio -->
